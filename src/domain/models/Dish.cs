@@ -1,4 +1,4 @@
-namespace web.Shared.models;
+namespace domain.models;
 
 public class Dish
 {
