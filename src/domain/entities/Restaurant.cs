@@ -1,4 +1,4 @@
-namespace domain.models;
+namespace domain.entities;
 
 public class Restaurant
 {
