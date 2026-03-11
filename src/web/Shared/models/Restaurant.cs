@@ -9,4 +9,5 @@ public class Restaurant
     public string OpenHours { get; set; } = string.Empty;
     public bool IsOpen { get; set; }
     public string Description { get; set; } = string.Empty;
+    public List<Dish>? Dishes{ get; set; }
 }
