@@ -1,0 +1,17 @@
+@page "/newRestaurant"
+@using System.Runtime.CompilerServices
+@inject RestaurantService RestaurantService
+@rendermode InteractiveServer
+<PageTitle>Samarbeta med oss</PageTitle>
+
+<h4>Öka försäljningen genom hemleverans</h4>
+
+@code
+{
+    private CreateRestaurantDTO model = new();
+    
+    private async Task HandleSubmit()
+    {
+        await RestaurantService.AddRestaurantAsync(model);
+    }
+}
