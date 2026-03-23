@@ -6,10 +6,53 @@
 
 <h4>Öka försäljningen genom hemleverans</h4>
 
+<EditForm Model="model" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+   
+    <InputText @bind-Value="model.Name"/>
+    <ValidationMessage For="@(() => model.Name)" />
+   
+    <InputText @bind-Value="model.Address"/>
+    <ValidationMessage For="@(() => model.Address)" />
+   
+    <InputText @bind-Value="model.PhoneNum"/>
+    <ValidationMessage For="@(() => model.PhoneNum)" />
+   
+    <InputText @bind-Value="model.Description"/>
+    <ValidationMessage For="@(() => model.Description)" />
+   
+    <InputText @bind-Value="openTimeString"/>
+    <InputText @bind-Value="closedTimeString"/>
+    
+    <button type="submit">Skicka in</button>
+</EditForm>
+
+
 @code
 {
     private CreateRestaurantDTO model = new();
     
+    private string openTimeString
+    {
+        get => GetTimeString(model.Open);
+        set => TrySetTime(value, t => model.Open = t);
+    }
+    private string closedTimeString
+    {
+        get => GetTimeString(model.Closed);
+        set => TrySetTime(value, t => model.Closed = t);
+    }
+    private string GetTimeString(TimeSpan time) => time.ToString(@"hh\:mm");
+    private bool TrySetTime(string value, Action<TimeSpan> setter)
+    {
+        if(TimeSpan.TryParse(value, out var result))
+        {
+            setter(result);
+            return true;
+        }
+        return false;
+    }
+
     private async Task HandleSubmit()
     {
         await RestaurantService.AddRestaurantAsync(model);
