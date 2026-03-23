@@ -11,11 +11,13 @@ public class Restaurant
     public string Description { get; set; } 
     public List<Dish>? Dishes{ get; set; }
 
-    public Restaurant(string name, string address, string phoneNum, string description)
+    public Restaurant(string name, string address, string phoneNum, TimeSpan open, TimeSpan closed , string description)
     {
         Name = name;
         Address = address;
         PhoneNum = phoneNum;
         Description = description;
+        Open = open;
+        Closed = closed;
     }
 }
