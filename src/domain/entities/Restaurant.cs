@@ -6,17 +6,17 @@ public class Restaurant
     public string Name { get; set; }
     public string Address { get; set; }
     public string PhoneNum { get; set; }
-    public string OpenHours { get; set; } 
+    public TimeSpan Open { get; set; }
+    public TimeSpan Closed { get; set; }
     public bool IsOpen { get; set; }
     public string Description { get; set; } 
     public List<Dish>? Dishes{ get; set; }
 
-    public Restaurant(string name, string address, string phoneNum, string openHours, string description)
+    public Restaurant(string name, string address, string phoneNum, string description)
     {
         Name = name;
         Address = address;
         PhoneNum = phoneNum;
-        OpenHours = openHours;
         Description = description;
     }
 }
