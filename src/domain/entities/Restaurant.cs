@@ -8,7 +8,6 @@ public class Restaurant
     public string PhoneNum { get; set; }
     public TimeSpan Open { get; set; }
     public TimeSpan Closed { get; set; }
-    public bool IsOpen { get; set; }
     public string Description { get; set; } 
     public List<Dish>? Dishes{ get; set; }
 
