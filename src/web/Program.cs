@@ -1,8 +1,17 @@
+using domain.interfaces;
+using infrastructure.data;
+using infrastructure.repositories;
+using Microsoft.EntityFrameworkCore;
 using web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<RestaurantService>();
+builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+
+builder.Services.AddDbContext<FoodServiceContext>(options => options.UseInMemoryDatabase("TestDb"));
+
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -16,7 +25,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
-app.UseHttpsRedirection();
 
 app.UseAntiforgery();
 
