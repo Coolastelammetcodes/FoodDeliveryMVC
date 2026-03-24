@@ -16,9 +16,9 @@ public class RestaurantService
             dto.Name,
             dto.Address,
             dto.PhoneNum,
+            dto.Description,
             dto.Open,
-            dto.Closed,
-            dto.Description
+            dto.Closed
         );
 
         await _restaurantrepo.AddNewRestaurantAsync(restaurant);
