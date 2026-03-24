@@ -1,32 +1,56 @@
 @page "/newRestaurant"
+@* @rendermode InteractiveServer *@
 @using System.Runtime.CompilerServices
 @inject RestaurantService RestaurantService
-@rendermode InteractiveServer
 <PageTitle>Samarbeta med oss</PageTitle>
 
-<h4>Öka försäljningen genom hemleverans</h4>
+<h2 class="mb-3">Öka försäljningen genom hemleverans</h2>
 
 <EditForm Model="model" OnValidSubmit="HandleSubmit">
     <DataAnnotationsValidator />
    
-    <InputText @bind-Value="model.Name"/>
+<div class="form-floating mb-2">
+    <InputText class="form-control" id="name" placeholder=""@bind-Value="model.Name" />
+    <label for="name">Företagets namn*</label>
     <ValidationMessage For="@(() => model.Name)" />
-   
-    <InputText @bind-Value="model.Address"/>
+</div>
+
+<div class="form-floating mb-2">
+    <InputText class="form-control" id="address" placeholder="" @bind-Value="model.Address"/>
+    <label for="address">Adress*</label>
     <ValidationMessage For="@(() => model.Address)" />
-   
-    <InputText @bind-Value="model.PhoneNum"/>
+</div>
+
+<div class="form-floating mb-2">
+    <InputText class="form-control" id="phoneNum" placeholder="" @bind-Value="model.PhoneNum"/>
+    <label for="phoneNum">Telefonnummer*</label>
     <ValidationMessage For="@(() => model.PhoneNum)" />
-   
-    <InputText @bind-Value="model.Description"/>
+</div>
+  
+<div class="form-floating mb-4">
+    <InputText class="form-control" id="description" placeholder="" @bind-Value="model.Description"/>
+    <label for="description">Kort beskrivning om ert utbud</label>
     <ValidationMessage For="@(() => model.Description)" />
+</div>
    
-    <InputText @bind-Value="openTimeString"/>
-    <InputText @bind-Value="closedTimeString"/>
+<div>
+    <h2 class="mb-3">Öppettider</h2>
     
+    <div class="form-floating mb-2">
+        <InputText class="form-control" id="openTime" @bind-Value="openTimeString"/>
+        <label for="openTime">Från</label>
+        <ValidationMessage For="@(() => model.Open)" />
+    </div>
+    
+    <div class="form-floating mb-2">
+        <InputText class="form-control" id="closedTime" @bind-Value="closedTimeString"/>
+        <label for="closedTime">Till</label>
+        <ValidationMessage For="@(() => model.Closed)" />
+    </div>
+    
+</div>
     <button type="submit">Skicka in</button>
 </EditForm>
-
 
 @code
 {
@@ -52,7 +76,6 @@
         }
         return false;
     }
-
     private async Task HandleSubmit()
     {
         await RestaurantService.AddRestaurantAsync(model);
