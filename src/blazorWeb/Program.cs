@@ -2,7 +2,7 @@ using domain.interfaces;
 using infrastructure.data;
 using infrastructure.repositories;
 using Microsoft.EntityFrameworkCore;
-using web.Components;
+using blazorweb.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
