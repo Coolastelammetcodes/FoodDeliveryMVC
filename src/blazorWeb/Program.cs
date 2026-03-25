@@ -2,15 +2,13 @@ using domain.interfaces;
 using infrastructure.data;
 using infrastructure.repositories;
 using Microsoft.EntityFrameworkCore;
-using blazorweb.Components;
+using blazorWeb.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<RestaurantService>();
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
-
-builder.Services.AddDbContext<FoodServiceContext>(options => options.UseInMemoryDatabase("TestDb"));
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
