@@ -9,7 +9,7 @@ public class RestaurantService
         _restaurantrepo = restaurantrepo;
     }
     
-    public async Task AddRestaurantAsync(CreateRestaurantDTO dto)
+    public async Task AddRestaurantAsync(AddRestaurantDTO dto)
     {
         var restaurant = new Restaurant
         (
