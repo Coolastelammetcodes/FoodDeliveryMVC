@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domain", "src\domain\domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "src\infrastructure\infrastructure.csproj", "{3D745DFE-AF9A-E111-755D-FD3FFF280728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazorWeb", "src\blazorWeb\blazorWeb.csproj", "{8A5C5E21-DFF3-4F42-955A-E15E38ABF475}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web", "src\blazorWeb\web.csproj", "{8A5C5E21-DFF3-4F42-955A-E15E38ABF475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webApi", "src\webApi\webApi.csproj", "{5CC2F4B4-C8D7-4190-A2E8-8E7BFDB61525}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "src\webApi\api.csproj", "{5CC2F4B4-C8D7-4190-A2E8-8E7BFDB61525}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
