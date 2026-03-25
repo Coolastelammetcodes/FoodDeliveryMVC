@@ -2,7 +2,7 @@ using System.Runtime.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route ("api[controller]")]
+[Route ("api/[controller]")]
 public class RestaurantController : ControllerBase
 {
     private readonly RestaurantService _restaurantService;
@@ -13,7 +13,8 @@ public class RestaurantController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Add(AddRestaurantDTO dto)
+    [Route("AddRestaurant")]
+    public async Task<IActionResult> AddRestaurant(AddRestaurantDTO dto)
     {
         await _restaurantService.AddRestaurantAsync(dto);
         return Ok();
