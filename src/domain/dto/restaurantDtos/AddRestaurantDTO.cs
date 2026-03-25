@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-public class CreateRestaurantDTO
+public class AddRestaurantDTO
 {
     [Required]
     public string Name { get; set; } = string.Empty;
