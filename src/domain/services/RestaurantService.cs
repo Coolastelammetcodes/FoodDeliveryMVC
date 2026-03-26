@@ -12,7 +12,12 @@ public class RestaurantService : IRestaurantService
     
     public async Task<List<Restaurant>> ViewAllRestaurantsAsync()
     {
-        return await _restaurantrepo.ViewAllRestaurantsAsync();
+        var restaurants = await _restaurantrepo.ViewAllRestaurantsAsync();
+        if(restaurants == null)
+        {
+            throw new Exception("Could not find any restaurants");
+        }
+        return restaurants;
     }
     public async Task AddRestaurantAsync(AddRestaurantDTO dto)
     {
@@ -20,10 +25,11 @@ public class RestaurantService : IRestaurantService
         (
             dto.Name,
             dto.Address,
-            dto.PhoneNum,
             dto.Description,
             dto.Open,
-            dto.Closed
+            dto.Closed,
+            dto.OrderDeadline
+
         );
 
         await _restaurantrepo.AddNewRestaurantAsync(restaurant);
