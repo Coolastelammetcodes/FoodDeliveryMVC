@@ -10,7 +10,7 @@ public class RestaurantService : IRestaurantService
         _restaurantrepo = restaurantrepo;
     }
     
-    public async Task<List<Restaurant>> ViewAllRestaurantsAsync()
+    public async Task<List<Restaurant>> ViewAllRestaurantsAsync() // TODO använd ViewRestaurantDTO här
     {
         var restaurants = await _restaurantrepo.ViewAllRestaurantsAsync();
         if(restaurants == null)
