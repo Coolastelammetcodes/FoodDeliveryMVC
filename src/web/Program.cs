@@ -1,6 +1,7 @@
 using domain.interfaces;
 using infrastructure.data;
 using infrastructure.repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using web.Components;
 
@@ -11,6 +12,12 @@ builder.Services.AddDbContext<FoodServiceContext>(options => options.UseInMemory
 builder.Services.AddScoped<RestaurantService>();
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 builder.Services.AddControllers();
+
+// builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//     .AddEntityFrameworkStores<FoodServiceContext>();
+  
+// builder.Services.AddAuthentication();
+// builder.Services.AddAuthorization();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -29,6 +36,7 @@ app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages:
 app.UseAntiforgery();
 
 app.MapControllers();
+// app.MapRazorPages();
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
