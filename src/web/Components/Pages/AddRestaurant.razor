@@ -1,7 +1,7 @@
 @page "/newRestaurant"
 @* @rendermode InteractiveServer *@
 @using System.Runtime.CompilerServices
-@inject HttpClient http
+@inject RestaurantService restaurantService
 <PageTitle>Samarbeta med oss</PageTitle>
 
 <h2 class="mb-3">Öka försäljningen genom hemleverans</h2>
@@ -79,7 +79,7 @@
     }
     private async Task HandleSubmit()
     {
-        var response = await http.PostAsJsonAsync("api/restaurant/AddRestaurant", model);
-        @* await restaurantService.AddRestaurantAsync(model);     *@
+        await restaurantService.AddRestaurantAsync(model);    
     }
+    //TODO Koppla ihop detta med controllers eller ta bort för att använda en annan view för admin
 }
