@@ -1,7 +1,22 @@
 ﻿@page "/"
+@using domain.entities
+@inject IRestaurantService restaurantService
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<h2>Restauranger</h2>
+
+
+@code // TODO fortsätt bygga här first thing 28/03
+{
+    private List<Restaurant>? restaurants;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        restaurants = await restaurantService.ViewAllRestaurantsAsync();
+    }
+}
