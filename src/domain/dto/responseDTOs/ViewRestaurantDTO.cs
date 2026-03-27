@@ -1,1 +1,1 @@
-public record ViewRestaurantDTO(int Id, string name, string address, string description, TimeSpan open, TimeSpan closed, TimeSpan orderDeadline);
+public record ViewRestaurantDTO(int Id, string Name, string Address, string Description, TimeSpan Open, TimeSpan Closed, TimeSpan OrderDeadline);
