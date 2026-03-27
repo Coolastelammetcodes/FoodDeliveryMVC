@@ -28,5 +28,6 @@ public class DbInitializer
             new TimeSpan(21,15,0)
         );
         await db.Restaurants.AddRangeAsync(restaurant1, restaurant2);
+        await db.SaveChangesAsync();
     }
 }
