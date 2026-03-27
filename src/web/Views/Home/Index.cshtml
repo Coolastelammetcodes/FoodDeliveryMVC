@@ -1,8 +1,9 @@
 ﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@* @using domain.entities *@
 @{
     ViewData["Title"] = "Home Page";
 }
-@model List<domain.dto.response.ViewRestaurantDTO>
+@model List<domain.dto.restaurant.RestaurantResponseDTO>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
@@ -17,7 +18,10 @@
             @foreach(var r in Model)
             {
                 <div>
-                    @r.Name
+                    <a 
+                        asp-controller="Restaurant" asp-action="Details" asp-route-id="@r.Id">
+                        <strong><h2>@r.Name</h2></strong>
+                    </a>
                 </div>
             }
         </ul>
