@@ -67,7 +67,7 @@ Projektet består av **två delar**:
 ## Publik Hemsida
 
 Besökare ska kunna:
-- [ ] **Se vilka restauranger** som finns.
+- [x] **Se vilka restauranger** som finns.
 - [ ] **Se restaurangers menyer**.
 - [ ] **Välja en maträtt** som ska beställas samt ange antal.
 - [ ] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift).
