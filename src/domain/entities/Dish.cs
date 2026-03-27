@@ -9,9 +9,11 @@ public class Dish
     public int RestaurantID { get; set; }
     public Restaurant? Restaurant { get; set; }
 
-    public Dish(string name, string description)
+    public Dish(string name, string description, int price, int restaurantID)
     {
         Name = name;
         Description = description;
+        Price = price;
+        RestaurantID = restaurantID;
     }
 }
