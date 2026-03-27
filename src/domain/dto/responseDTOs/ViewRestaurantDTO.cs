@@ -1,1 +1,2 @@
+namespace domain.dto.response;
 public record ViewRestaurantDTO(int Id, string Name, string Address, string Description, TimeSpan Open, TimeSpan Closed, TimeSpan OrderDeadline);
