@@ -6,9 +6,15 @@ namespace web.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    private readonly IRestaurantService _restaurantService;
+    public HomeController(IRestaurantService restaurantService)
     {
-        return View();
+        _restaurantService = restaurantService;
+    }
+    public async Task<IActionResult> Index()
+    {
+        var restaurants = await _restaurantService.ViewAllRestaurantsAsync();
+        return View(restaurants);
     }
 
     public IActionResult Privacy()
