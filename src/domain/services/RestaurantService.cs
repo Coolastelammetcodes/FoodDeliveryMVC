@@ -1,5 +1,7 @@
 using domain.entities;
 using domain.interfaces;
+using domain.dto.response;
+using domain.dto.request;
 using SQLitePCL;
 
 public class RestaurantService : IRestaurantService
