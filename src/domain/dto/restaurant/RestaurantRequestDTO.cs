@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-namespace domain.dto.request;
-public class AddRestaurantDTO
+namespace domain.dto.restaurant;
+public class RestaurantRequestDTO
 {
     [Required]
     public string Name { get; set; } = string.Empty;

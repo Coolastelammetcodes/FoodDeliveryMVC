@@ -1,8 +1,9 @@
 using domain.entities;
-using domain.dto.response;
+using domain.dto.restaurant;
 
 public interface IRestaurantService
 {
-    Task<List<ViewRestaurantDTO>> ViewAllRestaurantsAsync();
-    Task<ViewRestaurantDTO> ViewSpecificRestaurant(int id);
+    Task<List<RestaurantResponseDTO>> ViewAllRestaurantsAsync();
+    Task<RestaurantResponseDTO> ViewSpecificRestaurant(int id);
+    Task AddRestaurantAsync(RestaurantRequestDTO dto);
 }

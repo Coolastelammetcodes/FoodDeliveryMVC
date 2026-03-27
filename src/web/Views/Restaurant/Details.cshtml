@@ -1,0 +1,17 @@
+@{
+    ViewData["Title"] = "Restaurant Page";
+}
+@model domain.dto.restaurant.RestaurantResponseDTO
+
+<div class="text-center">
+    <h1 class="display-4">@Model.Name</h1>
+    
+    <p>
+        <strong>Öppettider: @Model.Open - @Model.Closed</strong><br />
+        @Model.Description
+    </p>
+</div>
+
+<div>
+    <h2>Maträtter</h2>
+</div>

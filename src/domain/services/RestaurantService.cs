@@ -1,7 +1,6 @@
 using domain.entities;
 using domain.interfaces;
-using domain.dto.response;
-using domain.dto.request;
+using domain.dto.restaurant;
 using SQLitePCL;
 using System.Security.Cryptography.X509Certificates;
 
@@ -13,14 +12,14 @@ public class RestaurantService : IRestaurantService
         _restaurantrepo = restaurantrepo;
     }
     
-    public async Task<ViewRestaurantDTO> ViewSpecificRestaurant(int id)
+    public async Task<RestaurantResponseDTO> ViewSpecificRestaurant(int id)
     {
         var restaurant = await _restaurantrepo.GetRestaurantByIdAsync(id);
         if(restaurant == null)
         {
             return null;
         }
-        return new ViewRestaurantDTO
+        return new RestaurantResponseDTO
         (
             restaurant.Id,
             restaurant.Name,
@@ -31,11 +30,11 @@ public class RestaurantService : IRestaurantService
             restaurant.OrderDeadline
         );
     }
-    public async Task<List<ViewRestaurantDTO>> ViewAllRestaurantsAsync() 
+    public async Task<List<RestaurantResponseDTO>> ViewAllRestaurantsAsync() 
     {
         var restaurants = await _restaurantrepo.ViewAllRestaurantsAsync();
         
-        return restaurants.Select(r => new ViewRestaurantDTO(
+        return restaurants.Select(r => new RestaurantResponseDTO(
             r.Id,
             r.Name,
             r.Address,
@@ -45,7 +44,7 @@ public class RestaurantService : IRestaurantService
             r.OrderDeadline
         )).ToList();
     }
-    public async Task AddRestaurantAsync(AddRestaurantDTO dto)
+    public async Task AddRestaurantAsync(RestaurantRequestDTO dto)
     {
         var restaurant = new Restaurant
         (
