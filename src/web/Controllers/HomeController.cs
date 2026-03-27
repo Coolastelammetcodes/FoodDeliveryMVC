@@ -14,6 +14,10 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var restaurants = await _restaurantService.ViewAllRestaurantsAsync();
+        if(restaurants == null || !restaurants.Any())
+        {
+            return NotFound();
+        }
         return View(restaurants);
     }
 
