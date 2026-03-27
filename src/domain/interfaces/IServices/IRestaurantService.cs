@@ -1,4 +1,5 @@
 using domain.entities;
+using domain.dto.response;
 
 public interface IRestaurantService
 {
