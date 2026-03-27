@@ -10,14 +10,19 @@ public class RestaurantService : IRestaurantService
         _restaurantrepo = restaurantrepo;
     }
     
-    public async Task<List<Restaurant>> ViewAllRestaurantsAsync() // TODO använd ViewRestaurantDTO här
+    public async Task<List<ViewRestaurantDTO>> ViewAllRestaurantsAsync() // TODO använd ViewRestaurantDTO här
     {
         var restaurants = await _restaurantrepo.ViewAllRestaurantsAsync();
-        if(restaurants == null)
-        {
-            throw new Exception("Could not find any restaurants");
-        }
-        return restaurants;
+        
+        return restaurants.Select(r => new ViewRestaurantDTO(
+            r.Id,
+            r.Name,
+            r.Address,
+            r.Description,
+            r.Open,
+            r.Closed,
+            r.OrderDeadline
+        )).ToList();
     }
     public async Task AddRestaurantAsync(AddRestaurantDTO dto)
     {
