@@ -3,6 +3,7 @@ using domain.interfaces;
 using domain.dto.response;
 using domain.dto.request;
 using SQLitePCL;
+using System.Security.Cryptography.X509Certificates;
 
 public class RestaurantService : IRestaurantService
 {
@@ -12,7 +13,25 @@ public class RestaurantService : IRestaurantService
         _restaurantrepo = restaurantrepo;
     }
     
-    public async Task<List<ViewRestaurantDTO>> ViewAllRestaurantsAsync() // TODO använd ViewRestaurantDTO här
+    public async Task<ViewRestaurantDTO> ViewSpecificRestaurant(int id)
+    {
+        var restaurant = await _restaurantrepo.GetRestaurantByIdAsync(id);
+        if(restaurant == null)
+        {
+            return null;
+        }
+        return new ViewRestaurantDTO
+        (
+            restaurant.Id,
+            restaurant.Name,
+            restaurant.Address,
+            restaurant.Description,
+            restaurant.Open,
+            restaurant.Closed,
+            restaurant.OrderDeadline
+        );
+    }
+    public async Task<List<ViewRestaurantDTO>> ViewAllRestaurantsAsync() 
     {
         var restaurants = await _restaurantrepo.ViewAllRestaurantsAsync();
         
