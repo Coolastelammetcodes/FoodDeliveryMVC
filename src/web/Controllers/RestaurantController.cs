@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-
+using web.Models;
 public class RestaurantController : Controller
 {
     private readonly IRestaurantService _restaurantService;
@@ -9,22 +9,24 @@ public class RestaurantController : Controller
         _restaurantService = restaurantService;
         _dishService = dishService;
     }
-    public async Task<IActionResult> Index()
-    {
-        var dishes = await _dishService.ViewAllDishesAsync();
-        if(dishes == null || !dishes.Any())
-        {
-            return NotFound();
-        }
-        return View(dishes);
-    }
-    public async Task<IActionResult> Details(int id)
+    public async Task<IActionResult> Index(int id)
     {
         var restaurant = await _restaurantService.ViewSpecificRestaurant(id);
         if(restaurant == null)
         {
             return NotFound();
         }
-        return View(restaurant);
+        
+        var dishes = await _dishService.GetDishesForRestaurantAsync(id);
+        if(dishes == null || !dishes.Any())
+        {
+            return NotFound();
+        }
+        var viewModel = new RestaurantDishModel
+        {
+            Restaurant = restaurant,
+            Dishes = dishes
+        };
+        return View(viewModel);
     }
 }
