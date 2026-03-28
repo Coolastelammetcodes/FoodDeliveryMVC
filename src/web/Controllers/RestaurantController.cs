@@ -9,7 +9,7 @@ public class RestaurantController : Controller
         _restaurantService = restaurantService;
         _dishService = dishService;
     }
-    public async Task<IActionResult> Index(int id)
+    public async Task<IActionResult> Details(int id)
     {
         var restaurant = await _restaurantService.ViewSpecificRestaurant(id);
         if(restaurant == null)
