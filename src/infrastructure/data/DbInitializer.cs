@@ -12,6 +12,7 @@ public class DbInitializer
     public async Task InitializeAsync()
     {
        await SeedRestaurantAsync();
+       await SeedDishAsync();
     }
     public async Task SeedRestaurantAsync()
     {
@@ -41,6 +42,31 @@ public class DbInitializer
             await _db.Restaurants.AddRangeAsync(restaurants);
             await _db.SaveChangesAsync();
         }
-       
+    }
+    public async Task SeedDishAsync()
+    {
+        if(!await _db.Dishes.AnyAsync())
+        {
+            var dishes = new List<Dish>
+            {
+                new Dish
+                (
+                    "Dubbel patty burger",
+                    "Burger with double patty, ketchup and mayonnaise",
+                    125,
+                    1
+                ),
+                new Dish
+                (
+                    "Itchy and scratchy burger",
+                    "Single mixed pattyburger with ketchup",
+                    110,
+                    2
+                )
+            };
+            
+            await _db.Dishes.AddRangeAsync(dishes);
+            await _db.SaveChangesAsync();
+        }
     }
 }
