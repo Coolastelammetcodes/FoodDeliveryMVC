@@ -1,8 +1,6 @@
 using domain.entities;
 using domain.interfaces;
 using domain.dto.restaurant;
-using SQLitePCL;
-using System.Security.Cryptography.X509Certificates;
 
 public class RestaurantService : IRestaurantService
 {
