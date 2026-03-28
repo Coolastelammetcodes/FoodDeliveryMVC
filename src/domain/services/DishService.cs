@@ -7,6 +7,17 @@ public class DishService : IDishService
         _dishRepo = dishRepo;
     }
 
+    public async Task<List<DishResponseDTO>> GetDishesForRestaurantAsync(int restaurantID)
+    {
+        var restaurantDishes = await _dishRepo.GetDishesForRestaurantAsync(restaurantID);
+         return restaurantDishes.Select(d => new DishResponseDTO(
+            d.Id,
+            d.Name,
+            d.Description,
+            d.Price,
+            d.RestaurantID
+        )).ToList();
+    }
     public async Task<List<DishResponseDTO>> ViewAllDishesAsync()
     {
         var dishes = await _dishRepo.ViewAllDishesAsync();
