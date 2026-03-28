@@ -1,17 +1,45 @@
+@using Microsoft.AspNetCore.Http.HttpResults
 @{
     ViewData["Title"] = "Restaurant Page";
 }
-@model domain.dto.restaurant.RestaurantResponseDTO
+    @model RestaurantDishModel
+    @if(Model.Restaurant != null)
+    {
+        <div class="text-center">
+        <h1 class="display-4">@Model.Restaurant.Name</h1>
+        
+        <p>
+            <strong>Öppettider: @Model.Restaurant.Open - @Model.Restaurant.Closed</strong><br />
+            @Model.Restaurant.Description
+        </p>
+        
+        </div>
 
-<div class="text-center">
-    <h1 class="display-4">@Model.Name</h1>
+        <div>
+            <h2>Maträtter</h2>
+            <br />
+            @if(Model.Dishes != null && Model.Dishes.Any())
+            {
+                @foreach(var d in Model.Dishes)
+                {
+                    <strong><h2>@d.Name</h2></strong>
+                    <h4>@d.Price kr</h4>
+                }
+            }
+            else
+            {
+                <h2>Kunde inte hitta maträtter. Försök igen senare.</h2>
+            }
+            
+            
+        </div>
+    }
+    else
+    {
+        <strong><h1>Kunde inte ladda restaurang. Försök igen senare.</h1></strong>
+    }
     
-    <p>
-        <strong>Öppettider: @Model.Open - @Model.Closed</strong><br />
-        @Model.Description
-    </p>
-</div>
-
-<div>
-    <h2>Maträtter</h2>
-</div>
+    
+        
+    
+    
