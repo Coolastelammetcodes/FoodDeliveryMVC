@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+namespace domain.dto.dish;
 public class DishRequestDTO
 {
     [Required]
