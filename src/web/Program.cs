@@ -3,16 +3,12 @@ using infrastructure.data;
 using infrastructure.repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
-using web.Data;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-var db = builder.Services.AddDbContext<FoodServiceContext>(options =>
+builder.Services.AddDbContext<FoodServiceContext>(options =>
     options.UseInMemoryDatabase("FoodServiceDB"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
