@@ -14,17 +14,15 @@
 
     @if(Model != null && Model.Any())
     {
-        <ul> 
+        
             @foreach(var r in Model)
             {
-                <div>
-                    <a 
-                        asp-controller="Restaurant" asp-action="Details" asp-route-id="@r.Id">
-                        <strong><h2>@r.Name</h2></strong>
-                    </a>
-                </div>
+                <a 
+                    asp-controller="Restaurant" asp-action="Details" asp-route-id="@r.Id" class="card d-inline-block mb-3 p-5 text-decoration-none text-dark">
+                    <strong><h2>@r.Name</h2></strong>
+                </a>
             }
-        </ul>
+        
     }
     else
     {
