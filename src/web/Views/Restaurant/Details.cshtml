@@ -22,16 +22,19 @@
             {
                 @foreach(var d in Model.Dishes)
                 {
-                    <strong><h2>@d.Name</h2></strong>
-                    <h4>@d.Price kr</h4>
+                    <a
+                        asp-controller="Dish" asp-action="Details" asp-route-id="@d.Id" class="card d-block text-decoration-none text-">
+                        <strong><h3>@d.Name</h3></strong>
+                        <h5 class="text-muted fs-6">@d.Description</h5>
+                        <h3>@d.Price kr</h3>
+                    </a>
                 }
             }
             else
             {
                 <h2>Kunde inte hitta maträtter. Försök igen senare.</h2>
             }
-            
-            
+        
         </div>
     }
     else
