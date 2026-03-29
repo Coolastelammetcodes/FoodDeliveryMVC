@@ -1,5 +1,4 @@
-using domain.entities;
-using domain.dto.restaurant;
+using domain.dto;
 
 public interface IRestaurantService
 {

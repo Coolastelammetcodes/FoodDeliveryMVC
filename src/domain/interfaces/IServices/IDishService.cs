@@ -1,4 +1,4 @@
-using domain.dto.dish;
+using domain.dto;
 public interface IDishService
 {
     Task<List<DishResponseDTO>> GetDishesForRestaurantAsync(int restaurantID);

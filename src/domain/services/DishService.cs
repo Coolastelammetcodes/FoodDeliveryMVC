@@ -1,4 +1,5 @@
-using domain.dto.dish;
+using domain.dto;
+using domain.interfaces;
 public class DishService : IDishService
 {
     private readonly IDishRepository _dishRepo;

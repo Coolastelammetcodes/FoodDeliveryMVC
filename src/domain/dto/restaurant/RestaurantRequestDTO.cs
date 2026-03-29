@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-namespace domain.dto.restaurant;
+namespace domain.dto;
 public class RestaurantRequestDTO
 {
     [Required]

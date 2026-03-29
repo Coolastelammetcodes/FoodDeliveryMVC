@@ -1,6 +1,5 @@
-using domain.dto.restaurant;
 using domain.entities;
-
+namespace domain.interfaces;
 public interface IDishRepository
 {
     Task<List<Dish>> ViewAllDishesAsync();
