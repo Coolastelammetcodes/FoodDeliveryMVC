@@ -1,19 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using web.Models;
 
 public class DishController : Controller //TODO lägg till beskrivning till rätten 
 {
-    private readonly DishService _dishService;
-    public DishController(DishService dishService)
+    private readonly IDishService _dishService;
+    public DishController(IDishService dishService)
     {
         _dishService = dishService;
     }
-    // public async Task<IActionResult> Details(int id)
-    // {
-    //     // var dish = await _dishService.ViewSpecificDishAsync(id);
-    //     // if(dish == null)
-    //     // {
-    //     //     return NotFound();
-    //     // }
-    //     // return View(dish);
-    // }
+    public async Task<IActionResult> Details(int id)
+    {
+        var dish = await _dishService.ViewSpecificDishAsync(id);
+        if(dish == null)
+        {
+            return NotFound();
+        }
+        return View(dish);
+    }
 }
