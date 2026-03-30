@@ -1,4 +1,5 @@
 using domain.dto;
+using domain.entities;
 using domain.interfaces;
 public class DishService : IDishService
 {
@@ -47,5 +48,15 @@ public class DishService : IDishService
             dish.RestaurantID
         );
     }
-    public async Task AddNewDishAsync(DishRequestDTO dishDTO){}
+    public async Task AddNewDishAsync(DishRequestDTO dishDTO)
+    {
+        var newDish = new Dish
+        (
+            dishDTO.Name,
+            dishDTO.Description,
+            dishDTO.Price,
+            dishDTO.RestaurantID
+        );
+        await _dishRepo.AddNewDishAsync(newDish);
+    }
 }
