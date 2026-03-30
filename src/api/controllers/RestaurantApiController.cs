@@ -1,6 +1,7 @@
 using domain.dto;
 using Microsoft.AspNetCore.Mvc;
 using domain.interfaces;
+using Swashbuckle.AspNetCore.Filters;
 [ApiController]
 [Route("api/[controller]")]
 public class RestaurantApiController : ControllerBase
@@ -11,6 +12,7 @@ public class RestaurantApiController : ControllerBase
         _restaurantService = restaurantService;
     }
     [HttpPost]
+    [SwaggerRequestExample(typeof(RestaurantRequestDTO), typeof(RestaurantRequestPlaceholder))]
     public async Task<IActionResult> AddRestaurant(RestaurantRequestDTO dto)
     {
         await _restaurantService.AddRestaurantAsync(dto);
