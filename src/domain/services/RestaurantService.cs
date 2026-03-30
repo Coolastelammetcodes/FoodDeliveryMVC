@@ -1,6 +1,6 @@
 using domain.entities;
 using domain.interfaces;
-using domain.dto.restaurant;
+using domain.dto;
 
 public class RestaurantService : IRestaurantService
 {

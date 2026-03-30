@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using web.Models;
 
-public class DishController : Controller //TODO lägg till beskrivning till rätten 
+public class DishController : Controller 
 {
     private readonly IDishService _dishService;
     public DishController(IDishService dishService)

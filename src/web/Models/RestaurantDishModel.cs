@@ -1,5 +1,4 @@
-using domain.dto.restaurant;
-using domain.dto.dish;
+using domain.dto;
 namespace web.Models;
 public class RestaurantDishModel
 {
