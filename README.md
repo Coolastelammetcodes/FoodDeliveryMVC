@@ -80,8 +80,8 @@ Besökare ska kunna:
 API:et ska fungera som ett administrationsverktyg (investeraren har för närvarande inte råd med ett användarvänligt gränssnitt).
 
 Funktioner via REST API:
-- [ ] **Registrera** nya restauranger.
-- [ ] **Lägga till** maträtter till restaurangers menyer.
+- [x] **Registrera** nya restauranger.
+- [x] **Lägga till** maträtter till restaurangers menyer.
 - [ ] **Hämta** en lista på alla ordrar.
 - [ ] **Hämta** en lista på ordrar med en specifik status (t.ex. alla ordrar som väntar på ett bud) och för en specifik restaurang.
 - [ ] **Ändra orderstatus** på en order.
