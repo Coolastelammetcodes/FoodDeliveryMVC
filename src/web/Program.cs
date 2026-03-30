@@ -18,7 +18,7 @@ builder.Services.AddScoped<IDishRepository, DishRepository>();
 builder.Services.AddScoped<IDishService, DishService>();
 builder.Services.AddScoped<DbInitializer>();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<FoodServiceContext>();
 builder.Services.AddControllersWithViews();
 
@@ -45,6 +45,7 @@ else
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
