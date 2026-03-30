@@ -13,7 +13,7 @@ public class RestaurantRepository : IRestaurantRepository
     }
     public async Task AddNewRestaurantAsync(Restaurant restaurant)
     {
-        _dbContext.Restaurants.Add(restaurant);
+        await _dbContext.Restaurants.AddAsync(restaurant);
         await _dbContext.SaveChangesAsync();
     }
     public async Task<List<Restaurant>> ViewAllRestaurantsAsync() => await _dbContext.Restaurants.ToListAsync();
@@ -26,6 +26,6 @@ public class RestaurantRepository : IRestaurantRepository
     public async Task DeleteRestaurantAsync(Restaurant restaurant)
     {
         _dbContext.Restaurants.Remove(restaurant);
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync();
     } 
 }
