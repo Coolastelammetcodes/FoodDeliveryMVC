@@ -2,6 +2,7 @@ using domain.interfaces;
 using infrastructure.repositories;
 using infrastructure.data;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,9 @@ builder.Services.AddScoped<DbInitializer>();
 builder.Services.AddOpenApi();
 
 builder.Services.AddControllers();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(s => s.ExampleFilters());
 
+builder.Services.AddSwaggerExamplesFromAssemblyOf<RestaurantRequestPlaceholder>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
