@@ -14,6 +14,9 @@ public class DishRepository : IDishRepository
     public async Task<List<Dish>> ViewAllDishesAsync() => await _dbContext.Dishes.ToListAsync(); 
     public async Task<Dish?> ViewSpecificDishAsync(int id) => await _dbContext.Dishes.FindAsync(id);
     public async Task AddNewDishAsync(Dish dish)
-    {}
+    {
+        await _dbContext.Dishes.AddAsync(dish);
+        await _dbContext.SaveChangesAsync();
+    }
 
 }
