@@ -1,0 +1,9 @@
+@using Microsoft.CodeAnalysis.CSharp
+@model domain.dto.OrderResponseDTO
+
+<h4>OrderID: @Model.Id</h4>
+@foreach(var oi in Model.OrderItems)
+{
+    <p>@oi.DishID</p> // TODO fixa här first thing imorgon. Testa använd navigation property eller skapa en model som tar in Order- och DishResponseDTO.
+    <p>@oi.Quantity</p>
+}
