@@ -2,3 +2,31 @@
 
 <strong><h2 style="width: max-content;">@Model.Name</p></strong>
 <p>@Model.Description</p>
+
+<form asp-controller="Order" asp-action="AddOrder">
+    <input type="hidden" name="OrderItems[0].DishID" value="@Model.Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Antal</label>
+        <button type="button" onclick="changeQuantity(-1)" class="btn btn-outline-secondary">-</button>
+        <span id="quantityDisplay">1</span>
+        <button type="button" onclick="changeQuantity(+1)" class="btn btn-outline-secondary">+</button>
+        <input type="hidden" name="OrderItems[0].quantity" id="quantity" value="1" />
+        <p>Pris: <span id="totalPrice">@Model.Price</span> kr </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lägg till</button>
+    <a asp-controller="Restaurant" asp-action="Details" asp-route-id="@Model.RestaurantID" class="btn btn-outline-secondary">Tillbaka</a>
+</form>
+
+<script> // Jag förstår koden samtidigt som jag inte förstår. Detta är rakt av AI
+    const price = @Model.Price;
+    let quantity = 1;
+
+    function changeQuantity(change) {
+        quantity = Math.max(1, Math.min(25, quantity + change));
+        document.getElementById("quantity").value = quantity;
+        document.getElementById("quantityDisplay").innerText = quantity;
+        document.getElementById("totalPrice").innerText = price * quantity;
+    }
+</script>
