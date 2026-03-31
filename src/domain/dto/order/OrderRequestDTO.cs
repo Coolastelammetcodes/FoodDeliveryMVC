@@ -3,5 +3,5 @@ using System.ComponentModel.DataAnnotations;
 public class OrderRequestDTO
 {
     [Required]
-    public List<OrderItemResponseDTO> OrderItems{ get; set; } = new();
+    public List<OrderItemRequestDTO> OrderItems{ get; set; } = new();
 }
