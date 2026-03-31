@@ -1,4 +1,4 @@
-using domain.entities;
+using domain.dto;
 
 public interface IOrderItemService
 {

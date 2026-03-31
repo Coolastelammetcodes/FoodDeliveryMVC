@@ -1,11 +1,12 @@
 using domain.entities;
 using domain.interfaces;
+using domain.dto;
 
 public class OrderService : IOrderService
 {   
     private readonly IOrderRepository _orderRepo;
-    private readonly OrderItemService _orderItemService;
-    public OrderService(IOrderRepository orderRepo, OrderItemService orderItemService)
+    private readonly IOrderItemService _orderItemService;
+    public OrderService(IOrderRepository orderRepo, IOrderItemService orderItemService)
     {
         _orderRepo = orderRepo;
         _orderItemService = orderItemService;
