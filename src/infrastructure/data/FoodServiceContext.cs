@@ -9,4 +9,5 @@ public class FoodServiceContext : IdentityDbContext<IdentityUser>
     public FoodServiceContext(DbContextOptions<FoodServiceContext> options) : base(options) {}
     public DbSet<Restaurant> Restaurants { get; set; }
     public DbSet<Dish> Dishes { get; set; }
+    public DbSet<Order> Orders { get; set; }
 }
