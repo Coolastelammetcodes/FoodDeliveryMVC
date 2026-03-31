@@ -9,7 +9,7 @@ public class OrderRepository : IOrderRepository
     {
         _db = db;
     }
-    public async Task AddNewOrder(Order order)
+    public async Task AddNewOrderAsync(Order order)
     {
         await _db.Orders.AddAsync(order);
         await _db.SaveChangesAsync();
