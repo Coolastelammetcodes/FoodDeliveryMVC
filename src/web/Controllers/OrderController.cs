@@ -15,8 +15,13 @@ public class OrderController : Controller
         return RedirectToAction("Confirmation", new { id = order.Id});
     }
     [HttpGet]
-    public async Task<IActionResult> Confirmation(Guid id)
+    public async Task<IActionResult> Confirmation(Guid Id)
     {
-        
+        var order = await _orderService.ViewSpecificOrderAsync(Id);
+        if(order == null)
+        {
+            return NotFound();
+        }
+        return View(order);
     }
 }
