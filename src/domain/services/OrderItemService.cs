@@ -23,5 +23,20 @@ public class OrderItemService : IOrderItemService
 
         await _orderItemRepo.AddOrderItemAsync(orderItem);
     }
-    public async Task<OrderItemResponseDTO> ViewSpecificOrderItemAsync(int id){return} //TODO fortsätt här
+    public async Task<OrderItemDishResponseDTO> ViewSpecificOrderItemAsync(int id)
+    {
+        var orderItem = await _orderItemRepo.ViewSpecificOrderItemWithDishAsync(id);
+        if(orderItem == null)
+        {
+            return null;
+        }
+        var oiDto = new OrderItemDishResponseDTO
+        {
+            Id = orderItem.Id,
+            DishID = orderItem.DishID,
+            DishName = orderItem.Dish?.Name ?? ""
+        };
+
+        return oiDto;
+    } 
 }
