@@ -2,8 +2,11 @@
 @model domain.dto.OrderResponseDTO
 
 <h4>OrderID: @Model.Id</h4>
-@foreach(var oi in Model.OrderItems)
-{
-    <p>@oi.DishID</p> // TODO fixa här first thing imorgon. Testa använd navigation property eller skapa en model som tar in Order- och DishResponseDTO.
+@foreach(domain.dto.OrderItemDishResponseDTO oi in Model.OrderItems)
+{  // TODO fixa så att det blir snyggare och fortsätt utveckla detta efter att ha byggt hela flödet för Customer. Detta ska vara bland det sista som faktiskt blir färdigt
     <p>@oi.Quantity</p>
+    <p>@oi.DishName</p>
+    <p>Pris för order @(oi.Price * oi.Quantity) </p>
 }
+
+    
