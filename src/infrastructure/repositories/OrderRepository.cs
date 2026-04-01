@@ -1,6 +1,7 @@
 using domain.entities;
 using domain.interfaces;
 using infrastructure.data;
+using Microsoft.EntityFrameworkCore;
 
 public class OrderRepository : IOrderRepository
 {
@@ -14,5 +15,5 @@ public class OrderRepository : IOrderRepository
         await _db.Orders.AddAsync(order);
         await _db.SaveChangesAsync();
     }
-    public async Task<Order?> ViewSpecificOrderAsync(Guid Id) => await _db.Orders.FindAsync(Id);
+    public async Task<Order?> ViewSpecificOrderWithDishesAsync(Guid Id) => await _db.Orders.Include(o => o.OrderItems).ThenInclude(oi => oi.Dish).FirstOrDefaultAsync(o => o.Id == Id);
 }
