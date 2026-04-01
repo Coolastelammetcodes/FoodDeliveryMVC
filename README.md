@@ -32,7 +32,7 @@ Obligatorisk självständig inlämningsuppgift för **BY-SUVNET OOP2**
 - [ ] Användning av **Asp.Net**, **EF Core** och **SQLite**.
 - [ ] Samtliga krav för hemsidan är uppfyllda.
 - [ ] Samtliga krav för REST-APIet är uppfyllda.
-- [ ] Minst 2 av 4 systemregler implementerade.
+- [ ] Minst 2 av 4 systemregler implementerade. // TODO fråga om detta. Det är 6 systemregler inklusive regler för bud
 - [ ] Checklista för inlämning (se ovan) har genomförts.
 - [ ] Förståelse kring vilka eventuella säkerhetsproblem applikationen kan ha.
 - [ ] Testerna beskrivna längst ner i projektet är gjorda.
