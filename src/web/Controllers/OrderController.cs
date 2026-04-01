@@ -17,7 +17,7 @@ public class OrderController : Controller
     [HttpGet]
     public async Task<IActionResult> Confirmation(Guid Id)
     {
-        var order = await _orderService.ViewSpecificOrderAsync(Id);
+        var order = await _orderService.ViewSpecificOrderWithDishesAsync(Id);
         if(order == null)
         {
             return NotFound();
