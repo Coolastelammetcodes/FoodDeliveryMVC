@@ -31,11 +31,13 @@ public class OrderItemService : IOrderItemService
             return null;
         }
         var oiDto = new OrderItemDishResponseDTO
-        {
-            Id = orderItem.Id,
-            DishID = orderItem.DishID,
-            DishName = orderItem.Dish?.Name ?? ""
-        };
+        (
+            orderItem.Id,
+            orderItem.Quantity,
+            orderItem.DishID,
+            orderItem.Dish?.Name ?? "",
+            orderItem.Dish?.Price ?? 0
+        );
 
         return oiDto;
     } 
