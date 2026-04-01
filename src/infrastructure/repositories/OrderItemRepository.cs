@@ -14,4 +14,5 @@ public class OrderItemRepository : IOrderItemRepository
         await _db.OrderItems.AddAsync(orderItem);
         await _db.SaveChangesAsync();
     }
+    public async Task<OrderItem?> ViewSpecificOrderItem(int id) => await _db.OrderItems.FindAsync(id);
 }
