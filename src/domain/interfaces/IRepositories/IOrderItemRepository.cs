@@ -3,5 +3,5 @@ namespace domain.interfaces;
 public interface IOrderItemRepository
 {
     Task AddOrderItemAsync(OrderItem orderItem);
-    Task<OrderItem?> ViewSpecificOrderItem(int id);
+    Task<OrderItem?> ViewSpecificOrderItemWithDishAsync(int id);
 }
