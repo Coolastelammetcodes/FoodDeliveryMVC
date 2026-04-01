@@ -23,4 +23,5 @@ public class OrderItemService : IOrderItemService
 
         await _orderItemRepo.AddOrderItemAsync(orderItem);
     }
+    public async Task<OrderItemResponseDTO> ViewSpecificOrderItemAsync(int id){return} //TODO fortsätt här
 }
