@@ -5,14 +5,14 @@ public class OrderItemDishResponseDTO
     public int DishID { get; init; }
     public int Quantity { get; init;}
     public string DishName { get; init; } = string.Empty;
-    public int Price { get; init; } // TODO byt namn till DishPrice
+    public int DishPrice { get; init; } 
 
-    public OrderItemDishResponseDTO(int id, int dishID, int quantity, string dishName, int price)
+    public OrderItemDishResponseDTO(int id, int dishID, int quantity, string dishName, int dishPrice)
     {
         Id = id;
         DishID = dishID;
         Quantity = quantity;
         DishName = dishName;
-        Price = price;
+        DishPrice = dishPrice;
     }
 }
