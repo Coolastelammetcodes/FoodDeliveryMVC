@@ -1,5 +1,5 @@
 namespace domain.interfaces;
 public interface ICustomerRepository
 {
-    Task AddCustomer(Customer customer);
+    Task AddCustomerAsync(Customer customer);
 }

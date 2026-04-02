@@ -9,7 +9,7 @@ public class CustomerRepository : ICustomerRepository
     
         
     
-    public async Task AddCustomer(Customer customer)
+    public async Task AddCustomerAsync(Customer customer)
     {
         await _db.Customers.AddAsync(customer);
         await _db.SaveChangesAsync();   
