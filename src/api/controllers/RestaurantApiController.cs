@@ -18,4 +18,5 @@ public class RestaurantApiController : ControllerBase
         await _restaurantService.AddRestaurantAsync(dto);
         return Created();
     }
+   // TODO kanske ta bort DishApiController bara använda RestaurantController för att visa eller ta bort maträtter. 
 }
