@@ -8,6 +8,6 @@ public class CustomerRequestDTO
     [Required]
     public string PhoneNum { get; set; } = string.Empty;
     [Required]
-    public string Mail { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
     public List<OrderResponseDTO?> Orders { get; set; } = new();
 }
