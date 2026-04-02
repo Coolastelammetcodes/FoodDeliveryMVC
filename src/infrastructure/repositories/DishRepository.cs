@@ -5,18 +5,18 @@ using Microsoft.EntityFrameworkCore;
 
 public class DishRepository : IDishRepository
 {
-    private readonly FoodServiceContext _dbContext;
-    public DishRepository(FoodServiceContext dbContext)
+    private readonly FoodServiceContext _db;
+    public DishRepository(FoodServiceContext db)
     {
-        _dbContext = dbContext;
+        _db = db;
     }
-    public async Task<List<Dish>> GetDishesForRestaurantAsync(int restaurantID) => await _dbContext.Dishes.Where(d => d.RestaurantID == restaurantID).ToListAsync();
-    public async Task<List<Dish>> ViewAllDishesAsync() => await _dbContext.Dishes.ToListAsync(); 
-    public async Task<Dish?> ViewSpecificDishAsync(int id) => await _dbContext.Dishes.FindAsync(id);
+    public async Task<List<Dish>> GetDishesForRestaurantAsync(int restaurantID) => await _db.Dishes.Where(d => d.RestaurantID == restaurantID).ToListAsync();
+    public async Task<List<Dish>> ViewAllDishesAsync() => await _db.Dishes.ToListAsync(); 
+    public async Task<Dish?> ViewSpecificDishAsync(int id) => await _db.Dishes.FindAsync(id);
     public async Task AddNewDishAsync(Dish dish)
     {
-        await _dbContext.Dishes.AddAsync(dish);
-        await _dbContext.SaveChangesAsync();
+        await _db.Dishes.AddAsync(dish);
+        await _db.SaveChangesAsync();
     }
 
 }
