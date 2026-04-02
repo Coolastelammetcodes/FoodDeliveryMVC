@@ -1,4 +1,4 @@
 public interface ICustomerService
 {
-    Task AddCustomer(CustomerRequestDTO customerDto);
+    Task AddCustomerAsync(CustomerRequestDTO customerDto);
 }
