@@ -9,14 +9,23 @@
     <div class="mb-3">
         <label class="form-label">Antal</label>
         <button type="button" onclick="changeQuantity(-1)" class="btn btn-outline-secondary">-</button>
+        
         <span id="quantityDisplay">1</span>
+       
         <button type="button" onclick="changeQuantity(+1)" class="btn btn-outline-secondary">+</button>
         <input type="hidden" name="OrderItems[0].quantity" id="quantity" value="1" />
+        
         <p>Pris: <span id="totalPrice">@Model.Price</span> kr </p>
     </div>
-
+    <h4>Dina uppgifter</h4>
+    
+    <input type="text" name="Customer.Name" placeholder="Namn" class="form-control mb-2" />
+    <input type="text" name="Customer.PhoneNum" placeholder="Telefon" class="form-control mb-2" />
+    <input type="email" name="Customer.Email" placeholder="Email" class="form-control mb-2" />
+    
     <button type="submit" class="btn btn-primary">Lägg till</button>
     <a asp-controller="Restaurant" asp-action="Details" asp-route-id="@Model.RestaurantID" class="btn btn-outline-secondary">Tillbaka</a>
+
 </form>
 
 <script> // Jag förstår koden samtidigt som jag inte förstår. Detta är rakt av AI
