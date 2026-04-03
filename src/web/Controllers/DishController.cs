@@ -15,6 +15,11 @@ public class DishController : Controller
         {
             return NotFound();
         }
-        return View(dish);
+        var doModel = new DishOrderModel
+        {
+            DishDto = dish,
+            OrderDto = new domain.dto.OrderResponseDTO()   
+        };
+        return View(doModel);
     }
 }
