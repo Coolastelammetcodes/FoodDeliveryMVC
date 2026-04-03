@@ -12,25 +12,25 @@ public class DishService : IDishService
     public async Task<List<DishResponseDTO>> GetDishesForRestaurantAsync(int restaurantID)
     {
         var restaurantDishes = await _dishRepo.GetDishesForRestaurantAsync(restaurantID);
-         return restaurantDishes.Select(d => new DishResponseDTO(
-            d.Id,
-            d.Name,
-            d.Description,
-            d.Price,
-            d.RestaurantID
-        )).ToList();
+        return restaurantDishes.Select(d => new DishResponseDTO{
+            Id = d.Id,
+            Name = d.Name,
+            Description = d.Description,
+            Price = d.Price,
+            RestaurantID = d.RestaurantID
+        }).ToList();
     }
     public async Task<List<DishResponseDTO>> ViewAllDishesAsync()
     {
         var dishes = await _dishRepo.ViewAllDishesAsync();
 
-        return dishes.Select(d => new DishResponseDTO(
-            d.Id,
-            d.Name,
-            d.Description,
-            d.Price,
-            d.RestaurantID
-        )).ToList();
+        return dishes.Select(d => new DishResponseDTO{
+        Id = d.Id,
+        Name = d.Name,
+        Description = d.Description,
+        Price = d.Price,
+        RestaurantID = d.RestaurantID
+    }).ToList();
     }
     public async Task<DishResponseDTO> ViewSpecificDishAsync(int id)
     {
@@ -40,13 +40,13 @@ public class DishService : IDishService
             return null;
         }
         return new DishResponseDTO
-        (
-            dish.Id,
-            dish.Name,
-            dish.Description,
-            dish.Price,
-            dish.RestaurantID
-        );
+        {
+            Id = dish.Id,
+            Name = dish.Name,
+            Description = dish.Description,
+            Price = dish.Price,
+            RestaurantID = dish.RestaurantID
+        };
     }
     public async Task AddNewDishAsync(DishRequestDTO dishDTO)
     {
