@@ -11,6 +11,13 @@ public class OrderService : IOrderService
     }
     public async Task<OrderResponseDTO> AddNewOrderAsync(OrderRequestDTO reqDto)
     {
+        if(reqDto.Customer == null 
+        || string.IsNullOrWhiteSpace(reqDto.Customer.Name)
+        || string.IsNullOrWhiteSpace(reqDto.Customer.Email)
+        || string.IsNullOrWhiteSpace(reqDto.Customer.PhoneNum))
+        {
+            throw new Exception("Fyll i dina uppgifter för att gå vidare");
+        }
         var order = new Order
         {
             Customer = MapToCustomer(reqDto.Customer),
@@ -34,6 +41,13 @@ public class OrderService : IOrderService
     private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem (oi.DishID, oi.Quantity);
     private OrderResponseDTO MapToOrderResponseDTO(Order o)
     {
-        return new OrderResponseDTO{ Id = o.Id, Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : null, OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO(oi.Id, oi.DishID, oi.Quantity, oi.Dish?.Name ?? "", oi.Dish?.Price ?? 0)).ToList()};
+        return new OrderResponseDTO{ Id = o.Id, Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : null, 
+        OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO{
+            Id = oi.Id, 
+            DishID = oi.DishID, 
+            Quantity = oi.Quantity, 
+            DishName = oi.Dish?.Name ?? "", 
+            DishPrice = oi.Dish?.Price ?? 0
+            }).ToList()};
     }    
 }
