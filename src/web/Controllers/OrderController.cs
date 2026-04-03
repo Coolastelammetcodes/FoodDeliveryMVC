@@ -3,9 +3,12 @@ using domain.dto;
 public class OrderController : Controller
 {
     private readonly IOrderService _orderService;
-    public OrderController(IOrderService orderService)
+    private readonly IDishService _dishService;
+    
+    public OrderController(IOrderService orderService, IDishService dishService)
     {
         _orderService = orderService;
+        _dishService = dishService;
     }
     
     [HttpPost]
@@ -13,6 +16,10 @@ public class OrderController : Controller
     {
         if(!ModelState.IsValid)
         {
+            var dishId = oReqDTO.OrderItems[0].DishID;
+            
+            var dish = await _dishService.ViewSpecificDishAsync(dishId);
+            dishOrderModel.DishDto = dish ?? new DishResponseDTO();
             return View("~/Views/Dish/Details.cshtml", dishOrderModel);
         }
         var order = await _orderService.AddNewOrderAsync(oReqDTO);
