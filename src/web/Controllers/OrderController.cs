@@ -9,9 +9,13 @@ public class OrderController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> AddOrder(OrderRequestDTO reqDto)
+    public async Task<IActionResult> AddOrder(DishOrderModel dishOrderModel, OrderRequestDTO oReqDTO)
     {
-        var order = await _orderService.AddNewOrderAsync(reqDto);
+        if(!ModelState.IsValid)
+        {
+            return View("~/Views/Dish/Details.cshtml", dishOrderModel);
+        }
+        var order = await _orderService.AddNewOrderAsync(oReqDTO);
         return RedirectToAction("Confirmation", new { id = order.Id});
     }
     [HttpGet]
