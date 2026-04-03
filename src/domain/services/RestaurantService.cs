@@ -18,29 +18,29 @@ public class RestaurantService : IRestaurantService
             return null;
         }
         return new RestaurantResponseDTO
-        (
-            restaurant.Id,
-            restaurant.Name,
-            restaurant.Address,
-            restaurant.Description,
-            restaurant.Open,
-            restaurant.Closed,
-            restaurant.OrderDeadline
-        );
+        {
+            Id = restaurant.Id,
+            Name = restaurant.Name,
+            Address = restaurant.Address,
+            Description = restaurant.Description,
+            Open = restaurant.Open,
+            Closed = restaurant.Closed,
+            OrderDeadline = restaurant.OrderDeadline
+        };
     }
     public async Task<List<RestaurantResponseDTO>> ViewAllRestaurantsAsync() 
     {
         var restaurants = await _restaurantrepo.ViewAllRestaurantsAsync();
         
-        return restaurants.Select(r => new RestaurantResponseDTO(
-            r.Id,
-            r.Name,
-            r.Address,
-            r.Description,
-            r.Open,
-            r.Closed,
-            r.OrderDeadline
-        )).ToList();
+        return restaurants.Select(r => new RestaurantResponseDTO{
+            Id= r.Id,
+            Name = r.Name,
+            Address = r.Address,
+            Description = r.Description,
+            Open = r.Open,
+            Closed = r.Closed,
+            OrderDeadline = r.OrderDeadline
+        }).ToList();
     }
     public async Task AddRestaurantAsync(RestaurantRequestDTO dto)
     {
@@ -52,7 +52,6 @@ public class RestaurantService : IRestaurantService
             dto.Open,
             dto.Closed,
             dto.OrderDeadline
-
         );
 
         await _restaurantrepo.AddNewRestaurantAsync(restaurant);
