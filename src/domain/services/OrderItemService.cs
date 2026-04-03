@@ -17,13 +17,13 @@ public class OrderItemService : IOrderItemService
             return null;
         }
         var oiDto = new OrderItemDishResponseDTO
-        (
-            orderItem.Id,
-            orderItem.Quantity,
-            orderItem.DishID,
-            orderItem.Dish?.Name ?? "",
-            orderItem.Dish?.Price ?? 0
-        );
+        {
+            Id = orderItem.Id,
+            Quantity = orderItem.Quantity,
+            DishID = orderItem.DishID,
+            DishName = orderItem.Dish?.Name ?? "",
+            DishPrice = orderItem.Dish?.Price ?? 0
+        };
 
         return oiDto;
     } 
