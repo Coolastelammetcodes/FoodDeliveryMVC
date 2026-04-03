@@ -9,20 +9,6 @@ public class OrderItemService : IOrderItemService
     {
         _orderItemRepo = orderItemRepo;
     }
-    public async Task AddOrderItemAsync(OrderItemRequestDTO dto)
-    {
-        if(dto.Quantity < 1)
-        {
-            throw new Exception("Det måste vara minst 1 antal");
-        }
-        var orderItem = new OrderItem
-        (
-            dto.DishID,
-            dto.Quantity
-        );
-
-        await _orderItemRepo.AddOrderItemAsync(orderItem);
-    }
     public async Task<OrderItemDishResponseDTO> ViewSpecificOrderItemAsync(int id)
     {
         var orderItem = await _orderItemRepo.ViewSpecificOrderItemWithDishAsync(id);
@@ -41,4 +27,5 @@ public class OrderItemService : IOrderItemService
 
         return oiDto;
     } 
+    private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem (oi.DishID, oi.Quantity);
 }
