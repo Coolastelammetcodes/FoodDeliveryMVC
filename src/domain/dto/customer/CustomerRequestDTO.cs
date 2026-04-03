@@ -9,5 +9,4 @@ public class CustomerRequestDTO
     public string PhoneNum { get; set; } = string.Empty;
     [Required]
     public string Email { get; set; } = string.Empty;
-    public List<OrderResponseDTO?> Orders { get; set; } = new();
 }
