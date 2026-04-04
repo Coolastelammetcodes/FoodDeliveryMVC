@@ -5,9 +5,11 @@ using domain.dto;
 public class OrderService : IOrderService
 {   
     private readonly IOrderRepository _orderRepo;
-    public OrderService(IOrderRepository orderRepo)
+    private readonly IDishRepository _dishRepo;
+    public OrderService(IOrderRepository orderRepo, IDishRepository dishRepo)
     {
         _orderRepo = orderRepo;
+        _dishRepo = dishRepo;
     }
     public async Task<OrderResponseDTO> AddNewOrderAsync(OrderRequestDTO reqDto)
     {
@@ -18,11 +20,15 @@ public class OrderService : IOrderService
         {
             throw new Exception("Fyll i dina uppgifter för att gå vidare");
         }
+
+        var result = await CalculateTotalPriceAsync(reqDto);
+
         var order = new Order
         {
             Customer = MapToCustomer(reqDto.Customer),
-            OrderItems = reqDto.OrderItems.Select(MapToOrderItem).ToList(),
-            Instructions = reqDto.Instructions
+            OrderItems = result.OrderItems,
+            Instructions = reqDto.Instructions,
+            TotalPrice = result.TotalPrice
         };
         await _orderRepo.AddNewOrderAsync(order);
         return MapToOrderResponseDTO(order);
@@ -41,13 +47,43 @@ public class OrderService : IOrderService
     private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem (oi.DishID, oi.Quantity);
     private OrderResponseDTO MapToOrderResponseDTO(Order o)
     {
-        return new OrderResponseDTO{ Id = o.Id, Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : null, 
-        OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO{
+        return new OrderResponseDTO
+        { 
+            Id = o.Id, 
+            Instructions = o.Instructions,
+            TotalPrice = o.TotalPrice, 
+            Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : new CustomerResponseDTO(),
+            
+            OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO{
             Id = oi.Id, 
             DishID = oi.DishID, 
             Quantity = oi.Quantity, 
             DishName = oi.Dish?.Name ?? "", 
             DishPrice = oi.Dish?.Price ?? 0
-            }).ToList()};
+            }).ToList()
+        };
+    }
+    private async Task<OrderCalculationResultDTO> CalculateTotalPriceAsync(OrderRequestDTO reqDto)
+    {
+        var orderItems = reqDto.OrderItems.Select(MapToOrderItem).ToList();
+
+        decimal itemsTotal = 0;
+
+        foreach(var item in orderItems)
+        {
+            var dish = await _dishRepo.ViewSpecificDishAsync(item.DishID);
+            item.Dish = dish;
+            itemsTotal += dish.Price * item.Quantity;
+        } 
+        
+        var restaurant = orderItems[0].Dish.Restaurant;
+        decimal serviceFee = itemsTotal * restaurant.ServiceFee;
+        decimal totalPrice = itemsTotal + restaurant.DeliveryFee + serviceFee;
+        
+        return new OrderCalculationResultDTO
+        {
+            OrderItems = orderItems,
+            TotalPrice = totalPrice
+        };
     }    
 }
