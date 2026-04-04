@@ -13,5 +13,7 @@ public class RestaurantRequestDTO
     public TimeSpan Closed { get; set; }
     [Required]
     public TimeSpan OrderDeadline { get; set;}
-    
+    [Required]
+    public int DeliveryFee { get; set; }
+    public decimal ServiceFee { get; set; } = 0.05m;
 }

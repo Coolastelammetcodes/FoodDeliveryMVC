@@ -8,4 +8,6 @@ public record class RestaurantResponseDTO
     public TimeSpan Open { get; init; }
     public TimeSpan Closed { get; init; }
     public TimeSpan OrderDeadline { get; init; }
+    public int DeliveryFee { get; init; }
+    public decimal ServiceFee { get; init; }
 }

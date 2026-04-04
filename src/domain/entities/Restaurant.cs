@@ -9,10 +9,12 @@ public class Restaurant
     public TimeSpan Open { get; set; }
     public TimeSpan Closed { get; set; }
     public TimeSpan OrderDeadline { get; set; }
+    public int DeliveryFee { get; set; }
+    public decimal ServiceFee { get; set; } = 0.05m;
     
     public List<Dish>? Dishes{ get; set; }
 
-    public Restaurant(string name, string address, string description ,TimeSpan open, TimeSpan closed, TimeSpan orderDeadline)
+    public Restaurant(string name, string address, string description ,TimeSpan open, TimeSpan closed, TimeSpan orderDeadline, int deliveryFee, decimal serviceFee)
     {
         Name = name;
         Address = address;
@@ -20,5 +22,7 @@ public class Restaurant
         Open = open;
         Closed = closed;
         OrderDeadline = orderDeadline;
+        DeliveryFee = deliveryFee;
+        ServiceFee = serviceFee;
     }
 }
