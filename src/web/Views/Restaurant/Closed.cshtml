@@ -1,0 +1,14 @@
+@model RestaurantDishModel // TODO fortsätt här sen för att få detta att fungera
+@{
+    ViewData["Title"] = "Restaurant Page";
+}
+@if(@Model.Restaurant != null)
+{
+    <h2>@Model.Restaurant?.Name</h2>
+
+    <p>Restaurangen är stängd. Öppettider varje dag är: @Model.Restaurant?.Open - @Model.Restaurant?.Closed</p>
+}
+else
+{
+    <p>Något gick fel. Kunde inte hitta restaurangen</p>
+}
