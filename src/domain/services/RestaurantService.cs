@@ -25,7 +25,9 @@ public class RestaurantService : IRestaurantService
             Description = restaurant.Description,
             Open = restaurant.Open,
             Closed = restaurant.Closed,
-            OrderDeadline = restaurant.OrderDeadline
+            OrderDeadline = restaurant.OrderDeadline,
+            DeliveryFee = restaurant.DeliveryFee,
+            ServiceFee = restaurant.ServiceFee
         };
     }
     public async Task<List<RestaurantResponseDTO>> ViewAllRestaurantsAsync() 
@@ -39,7 +41,9 @@ public class RestaurantService : IRestaurantService
             Description = r.Description,
             Open = r.Open,
             Closed = r.Closed,
-            OrderDeadline = r.OrderDeadline
+            OrderDeadline = r.OrderDeadline,
+            DeliveryFee = r.DeliveryFee,
+            ServiceFee = r.ServiceFee
         }).ToList();
     }
     public async Task AddRestaurantAsync(RestaurantRequestDTO dto)
@@ -51,7 +55,9 @@ public class RestaurantService : IRestaurantService
             dto.Description,
             dto.Open,
             dto.Closed,
-            dto.OrderDeadline
+            dto.OrderDeadline,
+            dto.DeliveryFee,
+            dto.ServiceFee
         );
 
         await _restaurantrepo.AddNewRestaurantAsync(restaurant);
