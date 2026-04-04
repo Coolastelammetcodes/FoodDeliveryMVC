@@ -26,7 +26,8 @@ public class DbInitializer
                     "Great burgers only at Bobs Burgers",
                     new TimeSpan(09,00,0),
                     new TimeSpan(21,00,0),
-                    new TimeSpan(20,45,0)
+                    new TimeSpan(20,45,0),
+                    79
                 ),
                 new Restaurant 
                 (   
@@ -35,7 +36,8 @@ public class DbInitializer
                     "Fun burgers",
                     new TimeSpan(11,00,0),
                     new TimeSpan(21,30,0),
-                    new TimeSpan(21,15,0)
+                    new TimeSpan(21,15,0),
+                    65
                 )  
             }; 
              
