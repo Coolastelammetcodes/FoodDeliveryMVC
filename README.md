@@ -32,7 +32,7 @@ Obligatorisk självständig inlämningsuppgift för **BY-SUVNET OOP2**
 - [ ] Användning av **Asp.Net**, **EF Core** och **SQLite**.
 - [ ] Samtliga krav för hemsidan är uppfyllda.
 - [ ] Samtliga krav för REST-APIet är uppfyllda.
-- [ ] Minst 2 av 4 systemregler implementerade. // TODO fråga om detta. Det är 6 systemregler inklusive regler för bud
+- [ ] Minst 2 av 4 systemregler implementerade.
 - [ ] Checklista för inlämning (se ovan) har genomförts.
 - [ ] Förståelse kring vilka eventuella säkerhetsproblem applikationen kan ha.
 - [ ] Testerna beskrivna längst ner i projektet är gjorda.
@@ -92,13 +92,13 @@ Funktioner via REST API:
 ## Regler för Systemet
 
 ### Order
-- [ ] En order får bara skapas om den innehåller all nödvändig information:
+- [x] En order får bara skapas om den innehåller all nödvändig information:
   - Beställd maträtt
   - Namn
   - Telefonnummer
   - Adress
 
-- En order kan bara läggas om:
+- En order kan bara läggas om: // TODO börja här firs thing imorgon
   - [ ] Restaurangen är öppen.
   - [ ] Ordern läggs innan "Tid för sista beställning".
 
