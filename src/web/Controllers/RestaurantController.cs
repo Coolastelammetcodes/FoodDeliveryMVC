@@ -9,12 +9,19 @@ public class RestaurantController : Controller
         _restaurantService = restaurantService;
         _dishService = dishService;
     }
+    [HttpGet]
     public async Task<IActionResult> Details(int id)
     {
+        var timeNow = new TimeSpan(05,59,00);
         var restaurant = await _restaurantService.ViewSpecificRestaurant(id);
         if(restaurant == null)
         {
             return NotFound();
+        }
+        
+        if(timeNow >= restaurant.OrderDeadline && timeNow >= restaurant.Closed || timeNow < restaurant.Open)
+        {
+            return RedirectToAction("Closed", "Restaurant");
         }
         
         var dishes = await _dishService.GetDishesForRestaurantAsync(id);
@@ -26,6 +33,17 @@ public class RestaurantController : Controller
         {
             Restaurant = restaurant,
             Dishes = dishes
+        };
+        return View(viewModel);
+    }
+    [HttpGet]
+    public async Task<IActionResult> Closed(int id)
+    {
+        var restaurant = await _restaurantService.ViewSpecificRestaurant(id);
+    
+        var viewModel = new RestaurantDishModel
+        {
+            Restaurant = restaurant,
         };
         return View(viewModel);
     }
