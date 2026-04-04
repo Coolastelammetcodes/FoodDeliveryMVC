@@ -7,4 +7,5 @@ public class OrderRequestDTO
     public string Instructions { get; set; } = string.Empty;
     [Required]
     public CustomerRequestDTO Customer { get; set; } = new();
+    public decimal TotalPrice { get; set; }
 }

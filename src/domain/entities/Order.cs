@@ -4,7 +4,8 @@ public class Order
     public Guid Id { get; init; } = Guid.NewGuid(); 
     public List<OrderItem> OrderItems { get; set; } = new();
     public string Instructions { get; set; } = string.Empty;
-    public Customer Customer { get; set; } = new(); 
+    public Customer Customer { get; set; } = new();
+    public decimal TotalPrice { get; set; } 
 
-    // TODO lägg props för att mata in kunduppgifter här och skippa Customer klassen om inte du hinner göra färdigt Customer innan lördag
+    // TODO Om du hinner lägg in så att användaren kan välja om hen vill spara sina uppgifter och först då använda Customertabellen men framtills dess behåll så att alla som lägger order sparas 
 }
