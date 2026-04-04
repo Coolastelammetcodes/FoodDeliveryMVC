@@ -21,7 +21,7 @@ public class RestaurantController : Controller
         
         if(timeNow >= restaurant.OrderDeadline && timeNow >= restaurant.Closed || timeNow < restaurant.Open)
         {
-            return RedirectToAction("Closed", "Restaurant");
+            return RedirectToAction("Closed", "Restaurant", new{id = restaurant.Id});
         }
         
         var dishes = await _dishService.GetDishesForRestaurantAsync(id);
