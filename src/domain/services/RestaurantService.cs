@@ -56,8 +56,7 @@ public class RestaurantService : IRestaurantService
             dto.Open,
             dto.Closed,
             dto.OrderDeadline,
-            dto.DeliveryFee,
-            dto.ServiceFee
+            dto.DeliveryFee
         );
 
         await _restaurantrepo.AddNewRestaurantAsync(restaurant);
