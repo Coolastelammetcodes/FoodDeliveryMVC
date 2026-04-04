@@ -1,12 +1,15 @@
-@model RestaurantDishModel // TODO fortsätt här sen för att få detta att fungera
+@using SQLitePCL
+@model RestaurantDishModel 
 @{
     ViewData["Title"] = "Restaurant Page";
 }
 @if(@Model.Restaurant != null)
 {
-    <h2>@Model.Restaurant?.Name</h2>
-
-    <p>Restaurangen är stängd. Öppettider varje dag är: @Model.Restaurant?.Open - @Model.Restaurant?.Closed</p>
+    <strong><p class="mb-3" style="text-align:center; font-size:50px">@Model.Restaurant?.Name</p></strong>
+    
+    <h3 class="mb-1" style="color: red; text-align: center">Restaurangen är stängd leverans.</h3> 
+    <p class="mb-1" style="text-align:center">Öppettider varje dag är: <strong>@Model.Restaurant?.Open - @Model.Restaurant?.Closed</strong></p>
+    <p style="text-align:center">Tar emot beställningar fram tills: <strong>@Model.Restaurant?.OrderDeadline</strong></p>    
 }
 else
 {
