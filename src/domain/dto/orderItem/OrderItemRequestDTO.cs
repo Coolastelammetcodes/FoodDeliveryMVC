@@ -7,4 +7,5 @@ public class OrderItemRequestDTO
     [Required]
     [Range(1,25)]
     public int Quantity { get; set; }
+    public DishResponseDTO Dish { get; set; } = new();
 }
