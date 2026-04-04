@@ -70,7 +70,7 @@ Besökare ska kunna:
 - [x] **Se vilka restauranger** som finns.
 - [ ] **Se restaurangers menyer**.
 - [ ] **Välja en maträtt** som ska beställas samt ange antal.
-- [ ] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift).
+- [ ] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). // TODO börja här sen 
 - [ ] **Se status för ordern** och hur lång tid det är kvar innan den levereras.
 
 ---
@@ -98,9 +98,9 @@ Funktioner via REST API:
   - Telefonnummer
   - Adress
 
-- En order kan bara läggas om: // TODO börja här firs thing imorgon
-  - [ ] Restaurangen är öppen.
-  - [ ] Ordern läggs innan "Tid för sista beställning".
+- En order kan bara läggas om: 
+  - [x] Restaurangen är öppen.
+  - [x] Ordern läggs innan "Tid för sista beställning".
 
 - [ ] **Orderstatus** ska följa följande flöde:
   - `received` → `confirmed` → `courier_accepted` → `preparing` → `ready_for_pickup` → `in_transit` → `delivered`.
