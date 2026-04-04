@@ -5,7 +5,7 @@
 
 <form asp-controller="Order" asp-action="AddOrder">
     <input type="hidden" name="OrderItems[0].DishID" value="@Model.DishDto.Id" />
-
+    
     <div class="mb-3">
         <label class="form-label">Antal</label>
         <button type="button" onclick="changeQuantity(-1)" class="btn btn-outline-secondary">-</button>
