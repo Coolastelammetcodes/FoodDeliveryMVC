@@ -8,6 +8,7 @@ public class DishController : Controller
     {
         _dishService = dishService;
     }
+    [HttpGet]
     public async Task<IActionResult> Details(int id)
     {
         var dish = await _dishService.ViewSpecificDishAsync(id);
