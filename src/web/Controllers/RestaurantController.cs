@@ -12,14 +12,15 @@ public class RestaurantController : Controller
     [HttpGet]
     public async Task<IActionResult> Details(int id)
     {
-        var timeNow = new TimeSpan(05,59,00);
+        var timeNow = DateTime.Now.TimeOfDay;
+        // var timeNow = new TimeSpan(20,45,00); // ifall man vill lägga tiden manuellt för att testa
         var restaurant = await _restaurantService.ViewSpecificRestaurant(id);
         if(restaurant == null)
         {
             return NotFound();
         }
         
-        if(timeNow >= restaurant.OrderDeadline && timeNow >= restaurant.Closed || timeNow < restaurant.Open)
+        if(timeNow >= restaurant.OrderDeadline || timeNow >= restaurant.Closed || timeNow < restaurant.Open)
         {
             return RedirectToAction("Closed", "Restaurant", new{id = restaurant.Id});
         }
