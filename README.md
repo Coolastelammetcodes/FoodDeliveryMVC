@@ -70,7 +70,7 @@ Besökare ska kunna:
 - [x] **Se vilka restauranger** som finns.
 - [x] **Se restaurangers menyer**.
 - [x] **Välja en maträtt** som ska beställas samt ange antal.
-- [x] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). // TODO börja här sen 
+- [x] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). 
 - [ ] **Se status för ordern** och hur lång tid det är kvar innan den levereras.
 
 ---
@@ -83,9 +83,9 @@ Funktioner via REST API:
 - [x] **Registrera** nya restauranger.
 - [x] **Lägga till** maträtter till restaurangers menyer.
 - [x] **Hämta** en lista på alla ordrar.
-- [ ] **Hämta** en lista på ordrar med en specifik status (t.ex. alla ordrar som väntar på ett bud) och för en specifik restaurang.
+- [x] **Hämta** en lista på ordrar med en specifik status (t.ex. alla ordrar som väntar på ett bud) och för en specifik restaurang.
 - [x] **Ändra orderstatus** på en order.
-- [ ] **Tilldela** en viss order till ett specifikt bud.
+- [ ] **Tilldela** en viss order till ett specifikt bud. // TODO börja här first thing måndag
 
 ---
 
@@ -177,7 +177,7 @@ Projektet skall ha ett eller två separata test-projekt som innehåller enhets- 
 
 ## Betygskriterier
 
-### För G
+### För G 
 - Gör minst två enhetstest på något i applikationens kärna
 - Testa API-endpointen för att hämta alla ordrar, med hjälp av ett integrationstest
 
