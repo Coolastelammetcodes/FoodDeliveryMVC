@@ -36,6 +36,11 @@ public class OrderService : IOrderService
         await _orderRepo.AddNewOrderAsync(order);
         return MapToOrderResponseDTO(order);
     }
+    public async Task<List<OrderResponseDTO>> ViewAllOrdersAsync()
+    {
+        var orders = await _orderRepo.ViewAllOrdersAsync();
+        return orders.Select(MapToOrderResponseDTO).ToList();
+    }
     public async Task<OrderResponseDTO?> ViewSpecificOrderWithDishesAsync(Guid Id)
     {
         var order = await _orderRepo.ViewSpecificOrderWithDishesAsync(Id);
