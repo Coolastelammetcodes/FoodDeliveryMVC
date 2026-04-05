@@ -4,11 +4,14 @@
 <h4>OrderID: @Model.Id</h4>
 @foreach(domain.dto.OrderItemDishResponseDTO oi in Model.OrderItems)
 {  // TODO fixa så att det blir snyggare och fortsätt utveckla detta efter att ha byggt hela flödet för Customer. Detta ska vara bland det sista som faktiskt blir färdigt
-    <p>@oi.Quantity</p>
-    <p>@oi.DishName</p>
-    <p>@Model.Customer.Name</p>
-    <p>@Model.Customer.PhoneNum</p>
-    <p>@Model.TotalPrice</p>
+    <p>@Model.OrderItems[0].Dish.Restaurant.Name</p>
+    <p>Maträtt: @oi.DishName</p>
+    <p>Antal maträtter: @oi.Quantity</p>
+    <p>Namn: @Model.Customer.Name</p>
+    <p>Tel: @Model.Customer.PhoneNum</p>
+    <p>Leverans-avgift: @Model.DeliveryFee kr</p>
+    <p>Service-avgift: @(Model.ServiceFee * 100)%</p>
+    <p>Totalpris: @Model.TotalPrice</p>
 }
 
     
