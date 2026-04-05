@@ -1,6 +1,7 @@
 using domain.entities;
 using domain.interfaces;
 using domain.dto;
+using domain.enums;
 
 public class OrderService : IOrderService
 {   
@@ -44,6 +45,14 @@ public class OrderService : IOrderService
         }
         return MapToOrderResponseDTO(order);
     }
+    public async Task<OrderResponseDTO> UpdateOrderStatusAsync(Guid id, OrderStatusEnum orderStatus)
+    {
+        await _orderRepo.UpdateOrderStatusAsync(id, orderStatus);
+        return await ViewSpecificOrderWithDishesAsync(id);
+    }
+
+    //Här under kommer det bara privata hjälp-metoder för att göra koden i huvud-metoderna mer läsbara.  
+
     private Customer MapToCustomer(CustomerRequestDTO c) => new Customer {Name = c.Name, PhoneNum = c.PhoneNum, Email = c.Email};
     private CustomerResponseDTO MapToCustomerResponse(Customer c) => new CustomerResponseDTO{Id = c.Id, Name = c.Name, Email = c.Email, PhoneNum = c.PhoneNum}; 
     private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem (oi.DishID, oi.Quantity);
