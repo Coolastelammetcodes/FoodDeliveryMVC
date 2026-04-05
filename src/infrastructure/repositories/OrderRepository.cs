@@ -23,6 +23,7 @@ public class OrderRepository : IOrderRepository
                                     .Include(o => o.OrderItems)
                                     .ThenInclude(oi => oi.Dish)
                                     .ThenInclude(d => d.Restaurant)
+                                    .Where(o => o.OrderStatus == orderStatus)
                                     .ToListAsync();
     public async Task<List<Order>> ViewAllOrdersAsync() => await _db.Orders
                                     .Include(o => o.Customer)
