@@ -1,3 +1,4 @@
+namespace domain.enums;
 public enum OrderStatusEnum
 {
     Received = 1,
@@ -8,5 +9,5 @@ public enum OrderStatusEnum
     InTransit = 6,
     Delivered = 7
 }
-//TODO bygg här efter lunch för att man ska kunna se orderstatus på orderi Confirmation
+
        
