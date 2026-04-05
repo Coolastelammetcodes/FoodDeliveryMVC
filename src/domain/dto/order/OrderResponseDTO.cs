@@ -5,5 +5,7 @@ public record class OrderResponseDTO()
     public List<OrderItemDishResponseDTO> OrderItems { get; init; } = new();
     public CustomerResponseDTO Customer { get; init; } = new();
     public string Instructions { get; init; } = string.Empty;
+    public int DeliveryFee { get; set; }
+    public decimal ServiceFee { get; set; }
     public decimal TotalPrice { get; init; }
 }
