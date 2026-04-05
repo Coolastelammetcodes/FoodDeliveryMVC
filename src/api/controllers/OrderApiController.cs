@@ -9,6 +9,15 @@ public class OrderApiController : ControllerBase
     {
         _orderService = orderService;
     }
+    [HttpGet("orderStatus/{orderStatus}")]
+    public async Task<IActionResult> ViewOrdersByStatus(OrderStatusEnum orderStatus)
+    {
+        var orders = await _orderService.ViewOrdersByStatus(orderStatus);
+
+        if(orders == null) return NotFound();
+
+        return Ok(orders);
+    }
     [HttpGet]
     public async Task<IActionResult> ViewAllOrdersAsync()
     {
