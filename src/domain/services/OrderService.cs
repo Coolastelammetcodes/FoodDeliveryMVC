@@ -28,6 +28,8 @@ public class OrderService : IOrderService
             Customer = MapToCustomer(reqDto.Customer),
             OrderItems = result.OrderItems,
             Instructions = reqDto.Instructions,
+            DeliveryFee = result.DeliveryFee,
+            ServiceFee = result.ServiceFee,
             TotalPrice = result.TotalPrice
         };
         await _orderRepo.AddNewOrderAsync(order);
@@ -51,6 +53,8 @@ public class OrderService : IOrderService
         { 
             Id = o.Id, 
             Instructions = o.Instructions,
+            DeliveryFee = o.DeliveryFee,
+            ServiceFee = o.ServiceFee,
             TotalPrice = o.TotalPrice, 
             Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : new CustomerResponseDTO(),
             
@@ -83,6 +87,8 @@ public class OrderService : IOrderService
         return new OrderCalculationResultDTO
         {
             OrderItems = orderItems,
+            DeliveryFee = restaurant.DeliveryFee,
+            ServiceFee = restaurant.ServiceFee,
             TotalPrice = totalPrice
         };
     }    
