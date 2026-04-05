@@ -12,8 +12,13 @@ builder.Services.AddDbContext<FoodServiceContext>(options =>
 // Add services to the container.
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
 builder.Services.AddScoped<IRestaurantService, RestaurantService>();
+
 builder.Services.AddScoped<IDishRepository, DishRepository>();
 builder.Services.AddScoped<IDishService, DishService>();
+
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 builder.Services.AddScoped<DbInitializer>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -28,6 +33,12 @@ builder.Services.AddSwaggerGen(s => {
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<RestaurantRequestPlaceholder>();
 var app = builder.Build();
+
+using (var scope = app.Services.CreateAsyncScope())
+{
+    var dbInit = scope.ServiceProvider.GetRequiredService<DbInitializer>();
+    await dbInit.InitializeAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
