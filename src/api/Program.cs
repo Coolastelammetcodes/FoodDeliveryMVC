@@ -3,6 +3,7 @@ using infrastructure.repositories;
 using infrastructure.data;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Filters;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +18,13 @@ builder.Services.AddScoped<DbInitializer>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddControllers();
-builder.Services.AddSwaggerGen(s => s.ExampleFilters());
+builder.Services.AddControllers().AddJsonOptions(options => 
+                    options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter())
+                );
+builder.Services.AddSwaggerGen(s => {
+                    s.ExampleFilters(); 
+                    s.UseInlineDefinitionsForEnums();
+                });
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<RestaurantRequestPlaceholder>();
 var app = builder.Build();
