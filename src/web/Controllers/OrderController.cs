@@ -22,7 +22,7 @@ public class OrderController : Controller
             dishOrderModel.DishDto = dish ?? new DishResponseDTO();
             return View("~/Views/Dish/Details.cshtml", dishOrderModel);
         }
-        var order = await _orderService.AddNewOrderAsync(oReqDTO); // TODO fortfarande något som inte fungerar här. Ta reda på vad det är och lös det first thing på söndag.
+        var order = await _orderService.AddNewOrderAsync(oReqDTO);
         return RedirectToAction("Confirmation", new { id = order.Id});
     }
     [HttpGet]
