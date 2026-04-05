@@ -25,12 +25,12 @@ public class DishService : IDishService
         var dishes = await _dishRepo.ViewAllDishesAsync();
 
         return dishes.Select(d => new DishResponseDTO{
-        Id = d.Id,
-        Name = d.Name,
-        Description = d.Description,
-        Price = d.Price,
-        RestaurantID = d.RestaurantID
-    }).ToList();
+            Id = d.Id,
+            Name = d.Name,
+            Description = d.Description,
+            Price = d.Price,
+            RestaurantID = d.RestaurantID
+        }).ToList();
     }
     public async Task<DishResponseDTO> ViewSpecificDishAsync(int id)
     {
