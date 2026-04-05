@@ -71,7 +71,8 @@ public class OrderService : IOrderService
             ServiceFee = o.ServiceFee,
             TotalPrice = o.TotalPrice, 
             Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : new CustomerResponseDTO(),
-            
+            OrderStatus = o.OrderStatus,
+
             OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO{
             Id = oi.Id, 
             DishID = oi.DishID, 
