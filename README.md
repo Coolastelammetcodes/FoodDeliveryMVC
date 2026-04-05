@@ -68,9 +68,9 @@ Projektet består av **två delar**:
 
 Besökare ska kunna:
 - [x] **Se vilka restauranger** som finns.
-- [ ] **Se restaurangers menyer**.
-- [ ] **Välja en maträtt** som ska beställas samt ange antal.
-- [ ] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). // TODO börja här sen 
+- [x] **Se restaurangers menyer**.
+- [x] **Välja en maträtt** som ska beställas samt ange antal.
+- [x] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). // TODO börja här sen 
 - [ ] **Se status för ordern** och hur lång tid det är kvar innan den levereras.
 
 ---
