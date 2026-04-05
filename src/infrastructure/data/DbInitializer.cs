@@ -97,7 +97,7 @@ public class DbInitializer
                 DeliveryFee = 49,
                 ServiceFee = 0.05m,
                 TotalPrice = 200m,
-                OrderStatus = OrderStatusEnum.Received,
+                OrderStatus = OrderStatusEnum.ReadyForPickup,
                 OrderItems = new List<OrderItem>
                 {
                     new OrderItem(2, 4)
