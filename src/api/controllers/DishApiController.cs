@@ -13,7 +13,7 @@ public class DishApiController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewDish(DishRequestDTO dto)
+    public async Task<IActionResult> AddNewDishAsync(DishRequestDTO dto)
     {
         await _dishService.AddNewDishAsync(dto);
         return Created();
