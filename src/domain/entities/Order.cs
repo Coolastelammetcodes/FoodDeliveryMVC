@@ -10,6 +10,8 @@ public class Order
     public decimal ServiceFee { get; set; }
     public decimal TotalPrice { get; set; } 
     public OrderStatusEnum OrderStatus { get; set; } = OrderStatusEnum.Received;
+    public int CourierID { get; set; }
+    public Courier? Courier { get; set; }
 
     // TODO Om du hinner lägg in så att användaren kan välja om hen vill spara sina uppgifter och först då använda Customertabellen men framtills dess behåll så att alla som lägger order sparas 
 }
