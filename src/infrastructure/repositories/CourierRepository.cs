@@ -19,5 +19,6 @@ public class CourierRepository : ICourierRepository
         var couriers = await _db.Couriers.ToListAsync();
         return couriers;
     }
+    public async Task<Courier?> GetCourierByIdAsync(int id) => await _db.Couriers.FindAsync(id);
     public async Task<Courier?> GetCourierByPhoneNumAsync(string phoneNum) => await _db.Couriers.FirstOrDefaultAsync(courier => courier.PhoneNum == phoneNum);
 }
