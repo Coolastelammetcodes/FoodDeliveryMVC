@@ -1,4 +1,5 @@
 public interface ICourierService
 {
-    Task AddNewCourierAsync(CourierRequestDTO reqDTO);
+    Task<CourierResponseDTO> AddNewCourierAsync(CourierRequestDTO reqDTO);
+    Task<List<CourierResponseDTO>> ViewAllCouriersAsync();
 }
