@@ -51,12 +51,12 @@ public class DishService : IDishService
     public async Task AddNewDishAsync(DishRequestDTO dishDTO)
     {
         var newDish = new Dish
-        (
-            dishDTO.Name,
-            dishDTO.Description,
-            dishDTO.Price,
-            dishDTO.RestaurantID
-        );
+        {
+            Name = dishDTO.Name,
+            Description = dishDTO.Description,
+            Price = dishDTO.Price,
+            RestaurantID = dishDTO.RestaurantID
+        };
         await _dishRepo.AddNewDishAsync(newDish);
     }
 }
