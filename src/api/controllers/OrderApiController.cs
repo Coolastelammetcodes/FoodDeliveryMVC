@@ -18,7 +18,7 @@ public class OrderApiController : ControllerBase
 
         return Ok(orders);
     }
-    [HttpGet]
+    [HttpGet("AllOrders")]
     public async Task<IActionResult> ViewAllOrdersAsync()
     {
         var orders = await _orderService.ViewAllOrdersAsync();
@@ -27,7 +27,7 @@ public class OrderApiController : ControllerBase
         
         return Ok(orders);
     }
-    [HttpPatch]
+    [HttpPatch("UpdateOrderStatus/order{id}/{orderStatus}")]
     public async Task<IActionResult> UpdateOrderStatusAsync(Guid id, OrderStatusEnum orderStatus)
     {
         var order = await _orderService.UpdateOrderStatusAsync(id, orderStatus);
@@ -35,5 +35,21 @@ public class OrderApiController : ControllerBase
         if(order == null) return NotFound();
         
         return Ok(order);
+    }
+    [HttpPatch("AssignCourierToOrder/Order{orderId}/Courier{courierID}")]
+    public async Task<IActionResult> AssignCourierToOrder(Guid orderId, int courierID)
+    {
+        try
+        {
+            var order = await _orderService.AssignCourierToOrder(orderId, courierID);
+
+            if(order == null) return NotFound();
+
+            return Ok(order);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex);
+        }
     }
 }
