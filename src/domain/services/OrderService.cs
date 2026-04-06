@@ -71,7 +71,7 @@ public class OrderService : IOrderService
 
     private Customer MapToCustomer(CustomerRequestDTO c) => new Customer {FName = c.FName, LName = c.LName, PhoneNum = c.PhoneNum, Email = c.Email};
     private CustomerResponseDTO MapToCustomerResponse(Customer c) => new CustomerResponseDTO{Id = c.Id, FName = c.FName, LName = c.LName, Email = c.Email, PhoneNum = c.PhoneNum}; 
-    private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem (oi.DishID, oi.Quantity);
+    private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem {DishID = oi.DishID, Quantity = oi.Quantity};
     private OrderResponseDTO MapToOrderResponseDTO(Order o)
     {
         return new OrderResponseDTO
@@ -83,6 +83,7 @@ public class OrderService : IOrderService
             TotalPrice = o.TotalPrice, 
             Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : new CustomerResponseDTO(),
             OrderStatus = o.OrderStatus,
+            EstimatedTime = GetEstimatedTime(o.OrderStatus),
             CourierID = o.CourierID,
 
             OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO{
@@ -118,5 +119,14 @@ public class OrderService : IOrderService
             ServiceFee = restaurant.ServiceFee,
             TotalPrice = totalPrice
         };
-    }    
+    }  
+    private string GetEstimatedTime(OrderStatusEnum orderStatus) => orderStatus switch
+    {
+        OrderStatusEnum.Received => "~35-45 min",
+        OrderStatusEnum.Confirmed => "~30-35 min",
+        OrderStatusEnum.CourierAccepted => "~25-30 min",
+        OrderStatusEnum.Preparing => "~20-25 min",
+        OrderStatusEnum.ReadyForPickup => "~10-15 min",
+        OrderStatusEnum.InTransit => "~5-10 min"
+    };  
 }
