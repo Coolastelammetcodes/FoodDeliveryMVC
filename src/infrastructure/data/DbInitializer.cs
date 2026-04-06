@@ -22,25 +22,26 @@ public class DbInitializer
         {
             var restaurants = new List<Restaurant>
             {
-                new Restaurant(   
-                    "Bob's Burgers",
-                    "Ocean Avenue",
-                    "Great burgers only at Bobs Burgers",
-                    new TimeSpan(09,00,0),
-                    new TimeSpan(21,00,0),
-                    new TimeSpan(20,45,0),
-                    79
-                ),
+                new Restaurant
+                {   
+                    Name = "Bob's Burgers",
+                    Address = "Ocean Avenue",
+                    Description = "Great burgers only at Bobs Burgers",
+                    Open = new TimeSpan(09,00,0),
+                    Closed = new TimeSpan(21,00,0),
+                    OrderDeadline = new TimeSpan(20,45,0),
+                    DeliveryFee = 79
+                },
                 new Restaurant 
-                (   
-                    "Krusty Burger",
-                    "Fast Food Boulevard",
-                    "Fun burgers",
-                    new TimeSpan(11,00,0),
-                    new TimeSpan(21,30,0),
-                    new TimeSpan(21,15,0),
-                    65
-                )  
+                {  
+                    Name = "Krusty Burger",
+                    Address = "Fast Food Boulevard",
+                    Description = "Fun burgers",
+                    Open = new TimeSpan(11,00,0),
+                    Closed = new TimeSpan(21,30,0),
+                    OrderDeadline = new TimeSpan(21,15,0),
+                    DeliveryFee = 65
+                }  
             }; 
              
             await _db.Restaurants.AddRangeAsync(restaurants);
@@ -54,19 +55,19 @@ public class DbInitializer
             var dishes = new List<Dish>
             {
                 new Dish
-                (
-                    "Dubbel patty burger",
-                    "Burger with double patty, ketchup and mayonnaise",
-                    125,
-                    1
-                ),
+                {
+                    Name = "Dubbel patty burger",
+                    Description = "Burger with double patty, ketchup and mayonnaise",
+                    Price = 125,
+                    RestaurantID = 1
+                },
                 new Dish
-                (
-                    "Itchy and scratchy burger",
-                    "Single mixed pattyburger with ketchup",
-                    110,
-                    2
-                )
+                {
+                    Name = "Itchy and scratchy burger",
+                    Description = "Single mixed pattyburger with ketchup",
+                    Price = 110,
+                    RestaurantID = 2
+                }
             };
             
             await _db.Dishes.AddRangeAsync(dishes);
@@ -89,7 +90,7 @@ public class DbInitializer
                     OrderStatus = OrderStatusEnum.Received,
                     OrderItems = new List<OrderItem>
                     {
-                        new OrderItem(1, 2)
+                        new OrderItem{DishID = 1, Quantity = 2}
                     }
                 },   
                 new Order
@@ -102,7 +103,7 @@ public class DbInitializer
                     OrderStatus = OrderStatusEnum.ReadyForPickup,
                     OrderItems = new List<OrderItem>
                     {
-                        new OrderItem(2, 4)
+                        new OrderItem{DishID = 2, Quantity = 4}
                     }
                 }   
             };
