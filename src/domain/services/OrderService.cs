@@ -14,10 +14,7 @@ public class OrderService : IOrderService
     }
     public async Task<OrderResponseDTO> AddNewOrderAsync(OrderRequestDTO reqDto)
     {
-        if(reqDto.Customer == null 
-        || string.IsNullOrWhiteSpace(reqDto.Customer.Name)
-        || string.IsNullOrWhiteSpace(reqDto.Customer.Email)
-        || string.IsNullOrWhiteSpace(reqDto.Customer.PhoneNum))
+        if(reqDto.Customer == null)
         {
             throw new Exception("Fyll i dina uppgifter för att gå vidare");
         }
@@ -63,8 +60,8 @@ public class OrderService : IOrderService
 
     //Här under kommer det bara privata hjälp-metoder för att göra koden i huvud-metoderna mer läsbara.  
 
-    private Customer MapToCustomer(CustomerRequestDTO c) => new Customer {Name = c.Name, PhoneNum = c.PhoneNum, Email = c.Email};
-    private CustomerResponseDTO MapToCustomerResponse(Customer c) => new CustomerResponseDTO{Id = c.Id, Name = c.Name, Email = c.Email, PhoneNum = c.PhoneNum}; 
+    private Customer MapToCustomer(CustomerRequestDTO c) => new Customer {FName = c.FName, LName = c.LName, PhoneNum = c.PhoneNum, Email = c.Email};
+    private CustomerResponseDTO MapToCustomerResponse(Customer c) => new CustomerResponseDTO{Id = c.Id, FName = c.FName, LName = c.LName, Email = c.Email, PhoneNum = c.PhoneNum}; 
     private OrderItem MapToOrderItem(OrderItemRequestDTO oi) => new OrderItem (oi.DishID, oi.Quantity);
     private OrderResponseDTO MapToOrderResponseDTO(Order o)
     {
