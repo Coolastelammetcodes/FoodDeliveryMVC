@@ -9,4 +9,5 @@ public interface IOrderRepository
     Task<List<Order>> ViewAllOrdersAsync();
     Task<Order?> ViewSpecificOrderWithDishesAsync(Guid Id);
     Task UpdateOrderStatusAsync(Guid id, OrderStatusEnum orderStatus);
+    Task AssignCourierToOrder(Guid orderId, int courierID);
 }
