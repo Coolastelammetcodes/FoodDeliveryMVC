@@ -71,7 +71,7 @@ Besökare ska kunna:
 - [x] **Se restaurangers menyer**.
 - [x] **Välja en maträtt** som ska beställas samt ange antal.
 - [x] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). 
-- [ ] **Se status för ordern** och hur lång tid det är kvar innan den levereras.
+- [ ] **Se status för ordern** och hur lång tid det är kvar innan den levereras. // TODO börja här sen
 
 ---
 
@@ -85,7 +85,7 @@ Funktioner via REST API:
 - [x] **Hämta** en lista på alla ordrar.
 - [x] **Hämta** en lista på ordrar med en specifik status (t.ex. alla ordrar som väntar på ett bud) och för en specifik restaurang.
 - [x] **Ändra orderstatus** på en order.
-- [ ] **Tilldela** en viss order till ett specifikt bud. // TODO börja här first thing måndag
+- [x] **Tilldela** en viss order till ett specifikt bud. 
 
 ---
 
