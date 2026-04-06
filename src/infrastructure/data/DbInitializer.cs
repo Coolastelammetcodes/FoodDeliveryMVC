@@ -81,7 +81,7 @@ public class DbInitializer
             {
                 new Order
                 {
-                    Customer = new Customer { Name = "Alice", Email = "alice@mail.com", PhoneNum = "0701234567" },
+                    Customer = new Customer { FName = "Lisa", LName = "Simpson", Email = "Lisa.s@mail.com", PhoneNum = "0701234567" },
                     Instructions = "Ingen lök tack",
                     DeliveryFee = 49,
                     ServiceFee = 0.05m,
@@ -94,7 +94,7 @@ public class DbInitializer
                 },   
                 new Order
                 {
-                    Customer = new Customer { Name = "Alfredo", Email = "Alfredo@mail.com", PhoneNum = "0702345678" },
+                    Customer = new Customer { FName = "Alfredo", LName = "Panini", Email = "Alfredo@mail.com", PhoneNum = "0702345678" },
                     Instructions = "Ingen lök tack",
                     DeliveryFee = 49,
                     ServiceFee = 0.05m,

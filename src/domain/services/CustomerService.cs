@@ -11,7 +11,8 @@ public class CustomerService : ICustomerService
     {
         var customer = new Customer
         {
-            Name = dto.Name,
+            FName = dto.FName,
+            LName = dto.LName,
             PhoneNum = dto.PhoneNum,
             Email = dto.Email
         };
