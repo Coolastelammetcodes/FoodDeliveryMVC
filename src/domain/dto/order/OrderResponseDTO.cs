@@ -10,4 +10,5 @@ public record class OrderResponseDTO()
     public decimal ServiceFee { get; init; }
     public decimal TotalPrice { get; init; }
     public OrderStatusEnum OrderStatus { get; init; }
+    public int CourierID { get; init; }
 }
