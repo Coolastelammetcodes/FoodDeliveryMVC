@@ -71,7 +71,7 @@ Besökare ska kunna:
 - [x] **Se restaurangers menyer**.
 - [x] **Välja en maträtt** som ska beställas samt ange antal.
 - [x] **Lägga en order** på vald maträtt, där totalpriset visas (summan för maten plus leveransavgift plus 5% serviceavgift). 
-- [ ] **Se status för ordern** och hur lång tid det är kvar innan den levereras. // TODO börja här sen
+- [x] **Se status för ordern** och hur lång tid det är kvar innan den levereras. 
 
 ---
 
