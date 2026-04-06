@@ -7,9 +7,4 @@ public class OrderItem
     public int DishID { get; set; }
     public int Quantity { get; set; }
     public Dish? Dish { get; set; }
-    public OrderItem(int dishID, int quantity)
-    {
-        DishID = dishID;
-        Quantity = quantity;
-    }
 }
