@@ -7,10 +7,12 @@ public class OrderService : IOrderService
 {   
     private readonly IOrderRepository _orderRepo;
     private readonly IDishRepository _dishRepo;
-    public OrderService(IOrderRepository orderRepo, IDishRepository dishRepo)
+    private readonly ICourierService _courierService;
+    public OrderService(IOrderRepository orderRepo, IDishRepository dishRepo, ICourierService courierService)
     {
         _orderRepo = orderRepo;
         _dishRepo = dishRepo;
+        _courierService = courierService;
     }
     public async Task<OrderResponseDTO> AddNewOrderAsync(OrderRequestDTO reqDto)
     {
@@ -57,6 +59,13 @@ public class OrderService : IOrderService
         await _orderRepo.UpdateOrderStatusAsync(id, orderStatus);
         return await ViewSpecificOrderWithDishesAsync(id);
     }
+    public async Task<OrderResponseDTO> AssignCourierToOrder(Guid orderId, int courierID)
+    {
+        await _courierService.GetCourierByIdAsync(courierID); // används för att hitta och null-checka om budet finns eller ej. Finns säkert bättre sätt att göra detta.
+        
+        await _orderRepo.AssignCourierToOrder(orderId, courierID);
+        return await ViewSpecificOrderWithDishesAsync(orderId);
+    }
 
     //Här under kommer det bara privata hjälp-metoder för att göra koden i huvud-metoderna mer läsbara.  
 
@@ -74,6 +83,7 @@ public class OrderService : IOrderService
             TotalPrice = o.TotalPrice, 
             Customer = o.Customer != null ? MapToCustomerResponse(o.Customer) : new CustomerResponseDTO(),
             OrderStatus = o.OrderStatus,
+            CourierID = o.CourierID,
 
             OrderItems = o.OrderItems.Select(oi => new OrderItemDishResponseDTO{
             Id = oi.Id, 
