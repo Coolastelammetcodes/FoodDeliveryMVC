@@ -19,6 +19,9 @@ builder.Services.AddScoped<IDishService, DishService>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
+builder.Services.AddScoped<ICourierRepository, CourierRepository>();
+builder.Services.AddScoped<ICourierService, CourierService>();
+
 builder.Services.AddScoped<DbInitializer>();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -32,6 +35,7 @@ builder.Services.AddSwaggerGen(s => {
                 });
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<RestaurantRequestPlaceholder>();
+builder.Services.AddSwaggerExamplesFromAssemblyOf<CourierRequestPlaceHolder>();
 var app = builder.Build();
 
 using (var scope = app.Services.CreateAsyncScope())
