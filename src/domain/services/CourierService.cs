@@ -25,6 +25,15 @@ public class CourierService : ICourierService
         await _courierRepo.AddNewCourierAsync(newCourier);
         return MapToCourierResponseDTO(newCourier);
     }
+    public async Task<CourierResponseDTO> GetCourierByIdAsync(int id)
+    {
+        var courier = await _courierRepo.GetCourierByIdAsync(id);
+        if(courier == null)
+        {
+            throw new Exception("Kunde inte hitta bud");
+        } 
+        return MapToCourierResponseDTO(courier);
+    }
     public async Task<List<CourierResponseDTO>> ViewAllCouriersAsync()
     {
         var couriers = await _courierRepo.ViewAllCouriersAsync();
