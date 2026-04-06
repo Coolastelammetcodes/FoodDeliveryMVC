@@ -20,8 +20,11 @@
     
     <h4>Dina uppgifter</h4>
     <div class="mb-3">
-        <input type="text" name="Customer.Name" placeholder="Namn" class="form-control mb-2" />
-        <span class="text-danger">@Html.ValidationMessage("Customer.Name")</span>
+        <input type="text" name="Customer.FName" placeholder="Förnamn" class="form-control mb-2" />
+        <span class="text-danger">@Html.ValidationMessage("Customer.FName")</span>
+        
+        <input type="text" name="Customer.LName" placeholder="Efternamn" class="form-control mb-2" />
+        <span class="text-danger">@Html.ValidationMessage("Customer.LName")</span>
 
         <input type="text" name="Customer.PhoneNum" placeholder="Telefon" class="form-control mb-2" />
         <span class="text-danger">@Html.ValidationMessage("Customer.PhoneNum")</span>
