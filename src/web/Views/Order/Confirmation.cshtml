@@ -5,13 +5,15 @@
 @foreach(domain.dto.OrderItemDishResponseDTO oi in Model.OrderItems)
 {  // TODO fixa så att det blir snyggare och fortsätt utveckla detta efter att ha byggt hela flödet för Customer. Detta ska vara bland det sista som faktiskt blir färdigt
     <p>@Model.OrderItems[0].Dish.Restaurant.Name</p>
-    <p>Maträtt: @oi.DishName</p>
-    <p>Antal maträtter: @oi.Quantity</p>
-    <p>Namn: @Model.Customer.Name</p>
+    <p>Maträtt: @(oi.Quantity)st @oi.DishName x @oi.DishPrice kr</p>
+    <p>Namn: @Model.Customer.FName @Model.Customer.LName</p>
     <p>Tel: @Model.Customer.PhoneNum</p>
     <p>Leverans-avgift: @Model.DeliveryFee kr</p>
     <p>Service-avgift: @(Model.ServiceFee * 100)%</p>
     <p>Totalpris: @Model.TotalPrice</p>
+    
+    <p style="color: green; font-size: 30px">OrderStatus: @Model.OrderStatus</p>
+    <p style="color: crimson; font-size: 30px">Beräknad leveranstid: @Model.EstimatedTime</p>
 }
 
     
