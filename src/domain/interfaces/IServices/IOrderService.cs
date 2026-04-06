@@ -8,4 +8,5 @@ public interface IOrderService
     Task<List<OrderResponseDTO>> ViewAllOrdersAsync();
     Task<OrderResponseDTO?> ViewSpecificOrderWithDishesAsync(Guid Id);
     Task<OrderResponseDTO> UpdateOrderStatusAsync(Guid id, OrderStatusEnum orderStatus);
+    Task<OrderResponseDTO> AssignCourierToOrder(Guid orderId, int courierID);
 }
