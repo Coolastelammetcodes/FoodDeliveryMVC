@@ -35,7 +35,7 @@ builder.Services.AddSwaggerGen(s => {
                 });
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<RestaurantRequestPlaceholder>();
-builder.Services.AddSwaggerExamplesFromAssemblyOf<CourierRequestPlaceHolder>();
+builder.Services.AddSwaggerExamplesFromAssemblyOf<CourierRequestPlaceholder>();
 var app = builder.Build();
 
 using (var scope = app.Services.CreateAsyncScope())
