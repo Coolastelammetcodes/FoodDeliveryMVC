@@ -13,15 +13,4 @@ public class Restaurant
     public decimal ServiceFee { get; set; } = 0.05m;
     
     public List<Dish>? Dishes{ get; set; }
-
-    public Restaurant(string name, string address, string description ,TimeSpan open, TimeSpan closed, TimeSpan orderDeadline, int deliveryFee)
-    {
-        Name = name;
-        Address = address;
-        Description = description;
-        Open = open;
-        Closed = closed;
-        OrderDeadline = orderDeadline;
-        DeliveryFee = deliveryFee;
-    }
 }
