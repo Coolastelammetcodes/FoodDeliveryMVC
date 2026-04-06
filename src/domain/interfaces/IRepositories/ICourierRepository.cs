@@ -1,6 +1,6 @@
 public interface ICourierRepository
 {
-    Task AddNewCourier(Courier courier);
+    Task AddNewCourierAsync(Courier courier);
     Task<List<Courier>> ViewAllCouriersAsync();
-    Task<Courier?> ViewSpecificCourier(int id);
+    Task<Courier?> ViewSpecificCourierAsync(int id);
 }

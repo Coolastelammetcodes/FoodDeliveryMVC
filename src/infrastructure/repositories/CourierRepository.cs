@@ -9,7 +9,7 @@ public class CourierRepository : ICourierRepository
         _db = db;
     }
 
-    public async Task AddNewCourier(Courier courier)
+    public async Task AddNewCourierAsync(Courier courier)
     {
         await _db.Couriers.AddAsync(courier);
         await _db.SaveChangesAsync();
@@ -19,5 +19,5 @@ public class CourierRepository : ICourierRepository
         var couriers = await _db.Couriers.ToListAsync();
         return couriers;
     }
-    public async Task<Courier?> ViewSpecificCourier(int id) => await _db.Couriers.FindAsync(id);
+    public async Task<Courier?> ViewSpecificCourierAsync(int id) => await _db.Couriers.FindAsync(id);
 }
