@@ -49,15 +49,15 @@ public class RestaurantService : IRestaurantService
     public async Task AddRestaurantAsync(RestaurantRequestDTO dto)
     {
         var restaurant = new Restaurant
-        (
-            dto.Name,
-            dto.Address,
-            dto.Description,
-            dto.Open,
-            dto.Closed,
-            dto.OrderDeadline,
-            dto.DeliveryFee
-        );
+        {
+            Name = dto.Name,
+            Address = dto.Address,
+            Description = dto.Description,
+            Open = dto.Open,
+            Closed = dto.Closed,
+            OrderDeadline = dto.OrderDeadline,
+            DeliveryFee = dto.DeliveryFee
+        };
 
         await _restaurantrepo.AddNewRestaurantAsync(restaurant);
     }
