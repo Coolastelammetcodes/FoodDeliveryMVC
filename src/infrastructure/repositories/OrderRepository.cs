@@ -44,4 +44,12 @@ public class OrderRepository : IOrderRepository
         order.OrderStatus = orderStatus;
         await _db.SaveChangesAsync();
     }
+    public async Task AssignCourierToOrder(Guid orderId, int courierID)
+    {
+        var order = await _db.Orders.FindAsync(orderId);
+        if (order == null) return;
+
+        order.CourierID = courierID;
+        await _db.SaveChangesAsync();
+    }
 }
