@@ -34,7 +34,7 @@ Obligatorisk självständig inlämningsuppgift för **BY-SUVNET OOP2**
 - [x] Samtliga krav för REST-APIet är uppfyllda.
 - [x] Minst 2 av 4 systemregler implementerade.
 - [x] Checklista för inlämning (se ovan) har genomförts.
-- [ ] Förståelse kring vilka eventuella säkerhetsproblem applikationen kan ha.
+- [x] Förståelse kring vilka eventuella säkerhetsproblem applikationen kan ha.
 - [x] Testerna beskrivna längst ner i projektet är gjorda.
 
 ### För VG
