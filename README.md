@@ -15,27 +15,27 @@ Obligatorisk självständig inlämningsuppgift för **BY-SUVNET OOP2**
 ---
 
 ## Checklista för inlämning
-- [ ] Jag har läst instruktionerna noggrant.
-- [ ] Jag har ställt frågor om det är något som är otydligt.
-- [ ] Jag har tagit bort oanvänd kod.
-- [ ] Jag har tagit bort onödiga kommentarer.
-- [ ] Jag har formaterat min kod fint.
-- [ ] Jag har förstått hur min kod fungerar.  
+- [x] Jag har läst instruktionerna noggrant.
+- [x] Jag har ställt frågor om det är något som är otydligt.
+- [x] Jag har tagit bort oanvänd kod.
+- [x] Jag har tagit bort onödiga kommentarer.
+- [x] Jag har formaterat min kod fint.
+- [x] Jag har förstått hur min kod fungerar.  
   *Prova att förklara högt för dig själv vad din kod gör. Fråga dig t.ex.: "Hur går det till när jag lägger till ett objekt av typen X?" eller "Vad händer när jag kör funktion X?"*
-- [ ] Jag har checkat av vilka funktionskrav jag anser att jag klarat genom att skriva ett x innanför [ ] i denna readmefil.
+- [x] Jag har checkat av vilka funktionskrav jag anser att jag klarat genom att skriva ett x innanför [ ] i denna readmefil.
 
 ---
 
 ## Betygskriterier
 
 ### För G
-- [ ] Användning av **Asp.Net**, **EF Core** och **SQLite**.
-- [ ] Samtliga krav för hemsidan är uppfyllda.
-- [ ] Samtliga krav för REST-APIet är uppfyllda.
-- [ ] Minst 2 av 4 systemregler implementerade.
-- [ ] Checklista för inlämning (se ovan) har genomförts.
+- [x] Användning av **Asp.Net**, **EF Core** och **SQLite**.
+- [x] Samtliga krav för hemsidan är uppfyllda.
+- [x] Samtliga krav för REST-APIet är uppfyllda.
+- [x] Minst 2 av 4 systemregler implementerade.
+- [x] Checklista för inlämning (se ovan) har genomförts.
 - [ ] Förståelse kring vilka eventuella säkerhetsproblem applikationen kan ha.
-- [ ] Testerna beskrivna längst ner i projektet är gjorda.
+- [x] Testerna beskrivna längst ner i projektet är gjorda.
 
 ### För VG
 - Samtliga G-krav ovan, plus:
