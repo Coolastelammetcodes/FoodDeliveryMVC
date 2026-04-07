@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<FoodServiceContext>(options =>
-    options.UseInMemoryDatabase("FoodServiceDB"));
+    options.UseSqlite(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -38,6 +38,9 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateAsyncScope())
 {
+    var db = scope.ServiceProvider.GetRequiredService<FoodServiceContext>();
+    await db.Database.MigrateAsync();
+
     var dbInit = scope.ServiceProvider.GetRequiredService<DbInitializer>();
     await dbInit.InitializeAsync();
 }
