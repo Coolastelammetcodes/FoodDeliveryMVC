@@ -127,6 +127,7 @@ public class OrderService : IOrderService
         OrderStatusEnum.CourierAccepted => "~25-30 min",
         OrderStatusEnum.Preparing => "~20-25 min",
         OrderStatusEnum.ReadyForPickup => "~10-15 min",
-        OrderStatusEnum.InTransit => "~5-10 min"
+        OrderStatusEnum.InTransit => "~5-10 min",
+        OrderStatusEnum.Delivered => "Order is delivered"
     };  
 }
