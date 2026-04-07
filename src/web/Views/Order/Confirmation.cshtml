@@ -3,8 +3,8 @@
 
 <h4>OrderID: @Model.Id</h4>
 @foreach(domain.dto.OrderItemDishResponseDTO oi in Model.OrderItems)
-{  // TODO fixa så att det blir snyggare och fortsätt utveckla detta efter att ha byggt hela flödet för Customer. Detta ska vara bland det sista som faktiskt blir färdigt
-    <p>@Model.OrderItems[0].Dish.Restaurant.Name</p>
+{   
+    <p>@oi.RestaurantName</p>
     <p>Maträtt: @(oi.Quantity)st @oi.DishName x @oi.DishPrice kr</p>
     <p>Namn: @Model.Customer.FName @Model.Customer.LName</p>
     <p>Tel: @Model.Customer.PhoneNum</p>

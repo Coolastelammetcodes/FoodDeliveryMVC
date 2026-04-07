@@ -9,7 +9,7 @@ public class OrderItemService : IOrderItemService
     {
         _orderItemRepo = orderItemRepo;
     }
-    public async Task<OrderItemDishResponseDTO> ViewSpecificOrderItemAsync(int id) // TODO Fixa så att denna blir korrekt senare
+    public async Task<OrderItemDishResponseDTO> ViewSpecificOrderItemAsync(int id) 
     {
         var orderItem = await _orderItemRepo.ViewSpecificOrderItemWithDishAsync(id);
         if(orderItem == null)
