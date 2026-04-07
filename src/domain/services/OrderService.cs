@@ -91,7 +91,9 @@ public class OrderService : IOrderService
             DishID = oi.DishID, 
             Quantity = oi.Quantity, 
             DishName = oi.Dish?.Name ?? "", 
-            DishPrice = oi.Dish?.Price ?? 0
+            DishPrice = oi.Dish?.Price ?? 0,
+            RestaurantID = oi.Dish.RestaurantID,
+            RestaurantName = oi.Dish.Restaurant.Name
             }).ToList()
         };
     }
