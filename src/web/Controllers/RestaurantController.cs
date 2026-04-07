@@ -12,7 +12,7 @@ public class RestaurantController : Controller
     [HttpGet]
     public async Task<IActionResult> Details(int id)
     {
-        // var timeNow = DateTime.Now.TimeOfDay;
+        // var timeNow = DateTime.Now.TimeOfDay; // ifall man ska använda den riktiga tiden
         var timeNow = new TimeSpan(20,44,00); // ifall man vill lägga tiden manuellt för att testa
         var restaurant = await _restaurantService.ViewSpecificRestaurant(id);
         if(restaurant == null)
