@@ -6,5 +6,7 @@ public class OrderItemDishResponseDTO
     public int Quantity { get; init;}
     public string DishName { get; init; } = string.Empty;
     public int DishPrice { get; init; } 
-    public DishResponseDTO Dish { get; set; } = new();
+    public int RestaurantID { get; init; }
+    public string RestaurantName { get; init; } = string.Empty;
+    public DishResponseDTO Dish { get; init; } = new();
 }
